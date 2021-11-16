@@ -60,7 +60,7 @@ session_start();
                             </div>
                         </div>
                         <br>
-                        <a href="../../index.html" class="text-primary" style="margin-left:77%">Return to Home</a>
+                        <a href="../../index.php" class="text-primary" style="margin-left:77%">Return to Home</a>
                     </div>
                 </div>
             </div>
