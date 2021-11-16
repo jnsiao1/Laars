@@ -1,3 +1,7 @@
+<?php
+ob_start();
+session_start();
+?>
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -43,14 +47,14 @@
                             <div class="card-body pt-5">
                                 <a class="text-center" href="index.html"> <h4>Admin Login</h4></a>
 
-                                <form class="mt-5 mb-5 login-input">
+                                <form class="mt-5 mb-5 login-input" action="" method="POST">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Username">
+                                        <input type="email" class="form-control" placeholder="Username" name="username">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" class="form-control" placeholder="Password" name="password">
                                     </div>
-                                    <a class="btn login-form__btn submit w-100" href="index.html">Log In</a>
+                                    <button class="btn login-form__btn submit w-100" type="submit">Log In</button>
                                 </form>
                                 <!-- <p class="mt-5 login-form__footer">Dont have account? <a href="page-register.html" class="text-primary">Sign Up</a> now</p> -->
                             </div>
@@ -63,8 +67,27 @@
         </div>
     </div>
 
+    <?php
+      $con =mysqli_connect("localhost","root","","db_gfast");
+      $err="";
+      if($con){
+        if(isset($_POST['btnLogin'])){
+          $email=$_POST['logEmail'];
+            $pwd=$_POST['logPass'];
+            $query="select * from usertbl where email='$email' and password='$pwd'";
+            $result = mysqli_query($con,$query);
+            $count = mysqli_num_rows($result);
+            if($count ==0)
+              echo "<script language='javascript'> alert('Incorrect username or password');</script>";
+            else{
+              $row=mysqli_fetch_assoc($result);
+              $_SESSION['login']=$row['email'];
+              header("Location: ../index.php");
+            }
+        }
 
-
+      }
+     ?>
 
     <!--**********************************
         Scripts
