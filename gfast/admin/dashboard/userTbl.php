@@ -1,4 +1,5 @@
 <?php
+  ob_start();
   $conn =mysqli_connect("localhost","root","","db_gfast");
   if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
@@ -18,6 +19,12 @@
     <!-- Custom Stylesheet -->
     <link href="./plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- modal -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+		<link rel="stylesheet" href="../../modal/css/ionicons.min.css">
+		<link rel="stylesheet" href="../../modal/css/style.css">
 
     <style>
         /* CSS */
@@ -218,7 +225,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">User Table</h4>
                                 <br>
-                                <button class="button-19" >Add User</button>
+                                <button type="button" class="button-19" data-toggle="modal" data-target="#addUser">Add User</button>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
@@ -245,7 +252,7 @@
                                             }
                                             // echo "</table>";
                                             } else { echo "0 results"; }
-                                            $conn->close();
+                                            // $conn->close();
 
                                            ?>
 
@@ -268,6 +275,50 @@
                 </div>
             </div>
             <!-- #/ container -->
+        </div>
+
+        <!-- Modal Add User -->
+        <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="ion-ios-close"></span>
+                </button>
+              </div>
+              <div class="modal-body p-4 py-5 p-md-5">
+                <h3 class="text-center mb-3">Add New User</h3>
+                <br>
+                <form action="#" class="signup-form"  method="POST">
+                  <div class="form-group mb-2">
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" placeholder="" name="fname">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label for="name">Last Name</label>
+                    <input type="text" class="form-control" placeholder="" name="lname">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" placeholder="" name="email">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label >Password</label>
+                    <input type="password" class="form-control" placeholder="" name="password">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label >Phone</label>
+                    <input type="text" class="form-control" placeholder="" name="phone">
+                  </div>
+                  <br>
+                  <div class="form-group mb-2">
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddUser">Add User</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
         <!--**********************************
             Content body end
@@ -303,6 +354,34 @@
     <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
     <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
 
+    <!-- modal -->
+    <script src="../modal/js/jquery.min.js"></script>
+    <script src="../modal/js/popper.js"></script>
+    <script src="../modal/js/bootstrap.min.js"></script>
+    <script src="../modal/js/main.js"></script>
+
 </body>
+
+<?php
+    if(isset($_POST['btnAddUser'])){
+        $fname=$_POST['fname'];
+        $lname=$_POST['lname'];
+        $email=$_POST['email'];
+        $pwd=$_POST['password'];
+        $phone=$_POST['phone'];
+        $query="INSERT INTO usertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email','$pwd', '$phone')";
+        mysqli_query($conn,$query);
+        header("Location: userTbl.php");
+        // $count = mysqli_num_rows($result);
+        // if($count ==0)
+        //   echo "<script language='javascript'> alert('Incorrect username or password');</script>";
+        // else{
+        //   $row=mysqli_fetch_assoc($result);
+        //   $_SESSION['login']=$row['email'];
+        //   header("Location: ../index.php");
+        // }
+    }
+?>
+ ?>
 
 </html>
