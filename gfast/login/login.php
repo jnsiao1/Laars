@@ -233,7 +233,7 @@ session_start();
               else{
                 $row=mysqli_fetch_assoc($result);
                 $_SESSION['login']=$row['email'];
-                header("Location: ../index.php");
+                header("Location: ../indexx.php");
               }
           }
 
