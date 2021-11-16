@@ -206,12 +206,14 @@ session_start();
     			</div>
     			<div class="register-show">
     				<h2>REGISTER</h2>
-            <input type="text" placeholder="First Name">
-            <input type="text" placeholder="Last Name">
-    				<input type="text" placeholder="Email">
-    				<input type="password" placeholder="Password">
-    				<input type="password" placeholder="Phone">
-    				<input type="button" value="Register">
+            <form action="" method="POST" >
+              <input type="text" placeholder="First Name" name="fname">
+              <input type="text" placeholder="Last Name" name="lname">
+      				<input type="text" placeholder="Email" name="regEmail">
+      				<input type="password" placeholder="Password" name="regPass">
+      				<input type="text" placeholder="Phone" name="phone">
+      				<input type="submit" value="Register" name="btnRegister">
+            </form>
     			</div>
     		</div>
     	</div>
@@ -233,6 +235,25 @@ session_start();
                 $_SESSION['login']=$row['email'];
                 header("Location: ../index.php");
               }
+          }
+
+          if(isset($_POST['btnRegister'])){
+              $fname=$_POST['fname'];
+              $lname=$_POST['lname'];
+              $email=$_POST['regEmail'];
+              $pwd=$_POST['regPass'];
+              $phone=$_POST['phone'];
+              $query="INSERT INTO usertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email','$pwd', '$phone')";
+              mysqli_query($con,$query);
+              header("Location: login.php");
+              // $count = mysqli_num_rows($result);
+              // if($count ==0)
+              //   echo "<script language='javascript'> alert('Incorrect username or password');</script>";
+              // else{
+              //   $row=mysqli_fetch_assoc($result);
+              //   $_SESSION['login']=$row['email'];
+              //   header("Location: ../index.php");
+              // }
           }
         }
        ?>
