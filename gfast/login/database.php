@@ -4,9 +4,9 @@ $username = "localhost";
 $uname = "root";
 $password = "";
 
-$db_name = "g-fast";
+$db_name = "g_fast";
 
-$con = mysqli_connect($username, $uname, $password, $db_name);
+$conn = mysqli_connect($username, $uname, $password, $db_name);
 
 if (!$conn) {
     echo "connection failed!";
