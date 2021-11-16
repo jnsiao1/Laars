@@ -1,3 +1,10 @@
+<?php
+  $conn =mysqli_connect("localhost","root","","db_gfast");
+  if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +18,68 @@
     <!-- Custom Stylesheet -->
     <link href="./plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* CSS */
+        .button-19 {
+        appearance: button;
+        background-color: #1899D6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: din-round,sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 8px 11px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 8%;
+        }
+
+        .button-19:after {
+        background-clip: padding-box;
+        background-color: #1CB0F6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+        }
+
+        .button-19:main,
+        .button-19:focus {
+        user-select: auto;
+        }
+
+        .button-19:hover:not(:disabled) {
+        filter: brightness(1.1);
+        }
+
+        .button-19:disabled {
+        cursor: auto;
+        }
+    </style>
 
 </head>
 
@@ -105,7 +174,7 @@
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Table</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./index.html" aria-expanded="false">User Table</a></li>
+                            <li><a href="./userTbl.php" aria-expanded="false">User Table</a></li>
                             <li><a href="./gasTbl.html" aria-expanded="false">Gas Table</a></li>
                         </ul>
                     </li>
@@ -142,13 +211,14 @@
         <div class="content-body">
 
           <br>
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">User Table</h4>
+                                <br>
+                                <button class="button-19" >Add User</button>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
@@ -164,11 +234,6 @@
                                         <tbody>
 
                                           <?php
-                                            $conn =mysqli_connect("localhost","root","","db_gfast");
-                                            if ($conn->connect_error) {
-                                            die("Connection failed: " . $conn->connect_error);
-                                            }
-
                                             $sql = "SELECT * FROM userTbl";
                                             $result = $conn->query($sql);
                                             if ($result->num_rows > 0) {
