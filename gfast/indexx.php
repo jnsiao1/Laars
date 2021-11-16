@@ -432,7 +432,7 @@
             </div>
             <br><br>
             <center>
-              <a href=#>Rider's Login</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a href=admin/dashboard/page-login.html>Admin's Login</a>
+              <a href=#>Rider's Login</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a href=admin/dashboard/page-login.php>Admin's Login</a>
             </center>
         </footer>
         <!-- Portfolio Modals-->
