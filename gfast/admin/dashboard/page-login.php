@@ -83,7 +83,7 @@ session_start();
             else{
               $row=mysqli_fetch_assoc($result);
               $_SESSION['login']=$row['username'];
-              header("Location: index.html");
+              header("Location: userTbl.php");
             }
         }
 
