@@ -31,6 +31,9 @@
           #session_email{
             color: white;
           }
+          .logoutRef{
+            text-decoration: none;
+          }
         </style>
 
     </head>
@@ -44,7 +47,7 @@
                     <i class="fas fa-bars ms-1"></i>
                 </button> -->
                 <!-- <a href="login/login.php"><button type="button" class="btn btn-danger">Login / Sign-up</button></a> -->
-                <span id="session_email"><?=$_SESSION['login'];?></span>
+                <span id="session_email"><?=$_SESSION['login'];?></span> ! <a href="login/logout.php" class="logoutRef" style="float: right; ">Logout</a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
