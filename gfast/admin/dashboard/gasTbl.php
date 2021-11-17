@@ -254,7 +254,7 @@
                                             while($row = $result->fetch_assoc()) {
                                             echo "<tr><td>" . $row["company"]. "</td><td>" . $row["name"] . "</td><td>"
                                             . $row["price"]. "</td>   <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['gasID']. "'>
-                                              </i> &nbsp <i class='fas fa-trash-alt'></i>". "</td>
+                                              </i> &nbsp <i class='fas fa-trash-alt' data toogle='modal'data-target='deleteUser".$row['gasID']. "'></i>". "</td>
                                           </tr>";
 
 
@@ -273,8 +273,6 @@
 
                                               </div>
                                               <div class='modal-body'>
-
-
                                                 <div class='modal-body p-4 py-5 p-md-5'>
                                                   <h3 class='text-center mb-3'>Update User</h3>
                                                   <br>
@@ -292,26 +290,52 @@
                                                       <label for='email'>Price</label>
                                                       <input type='text' class='form-control' value=' ". $row2["price"] ." ' name='price' >
                                                     </div>
-
-
                                                     <br>
                                                     <div class='form-group mb-2'>
                                                       <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateGas'>Upate Gas</button>
                                                     </div>
-
-
                                                   </form>
                                                 </div>
-
 
                                               </div>
                                               <div class='modal-footer'>
                                                 <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
                                               </div>
                                             </div>
-
                                           </div>
                                         </div>";
+
+
+
+                                        echo "<div id='deleteUser".$row['gasID']."' class='modal fade' role='dialog'>
+
+                                        <div class='modal-dialog'>
+
+                                          <!-- Modal content-->
+                                          <div class='modal-content'>
+                                            <div class='modal-header'>
+
+                                            </div>
+                                            <div class='modal-body'>
+                                              <div class='modal-body p-4 py-5 p-md-5'>
+                                                <h3 class='text-center mb-3'>Delete User</h3>
+                                                <br>
+                                                <form class='signup-form'  method='POST'>
+                                                    <input type='text' class='form-control' value=' ". $row2["gasID"] ." ' name='gas_ID' hidden>
+                                                  <br>
+                                                  <div class='form-group mb-2'>
+                                                    <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnDeleteGas'>Upate Gas</button>
+                                                  </div>
+                                                </form>
+                                              </div>
+
+                                            </div>
+                                            <div class='modal-footer'>
+                                              <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>";
                                           }
                                           // echo "</table>";
                                           } else { echo "0 results"; }
@@ -405,6 +429,35 @@
             </div>
           </div>
         </div>
+
+
+        <!-- Modal Delete User -->
+        <div class="modal fade" id="deleteGas<?php echo $row['gasID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="ion-ios-close"></span>
+                </button>
+              </div>
+              <div class="modal-body p-4 py-5 p-md-5">
+                <h3 class="text-center mb-3">Update Gas</h3>
+                <br>
+                <form action="#" class="signup-form"  method="POST">
+                  <div class="form-group mb-2">
+                    <label for="name">Company</label>
+                    <input type="text" class="form-control" placeholder="<?php $row["gasID"] ?>" name="gasID">
+                  </div>
+                  <br>
+                  <div class="form-group mb-2">
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnDeleteGas">Delete Gas</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
         <!--**********************************
             Content body end
         ***********************************-->
@@ -472,6 +525,12 @@
 
           $sql3 = mysqli_query($conn,"UPDATE gasTbl set company='$company',name='$name',price='$price'where gasID = $gas");
           header("Location: gasTbl.php");
+
+      }
+    if(isset($_POST['btnDeleteGas'])){
+            $gas=$_POST['gas_ID'];
+            $sql3 = mysqli_query($conn,"DELETE gasTbl set gasID = $gas");
+            header("Location: gasTbl.php");
 
       }
 ?>
