@@ -258,14 +258,12 @@
                                             <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['userID']. "'>
                                             </i> &nbsp <i class='fas fa-trash-alt'></i>". "</td> </tr>";
 
-                                            $sql2 = "SELECT * FROM user WHERE userID = ' ".$row['userID']." ' ";
-                                            // $result2 = $conn->query($sql2);
+                                            $sql2 = "SELECT * FROM userTbl WHERE userID = ' ".$row['userID']." ' ";
                                             $result2 = mysqli_query($conn,$sql2);
                                             $row2=mysqli_fetch_assoc($result2);
-                                            // $row2 = $result2->fetch_assoc();
 
-                                            // echo "<div id='updateUser".$row['userID']."' class='modal fade' role='dialog'>
-                                            echo "<div id=updateUser ' ".$row['userID']." ' class='modal fade' role='dialog'>
+                                            echo "<div id='updateUser".$row['userID']."' class='modal fade' role='dialog'>
+
                                             <div class='modal-dialog'>
 
                                               <!-- Modal content-->
@@ -275,7 +273,7 @@
                                                 </div>
                                                 <div class='modal-body'>
                                                   <p>Some text in the modal.</p>"
-                                                  .$row['firstName']. "
+                                                  .$row['lastName']. "
                                                 </div>
                                                 <div class='modal-footer'>
                                                   <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
