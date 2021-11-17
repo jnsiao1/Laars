@@ -254,7 +254,7 @@
                                             while($row = $result->fetch_assoc()) {
                                                 echo "<tr><td>" . $row["adminID"]. "</td><td>" . $row["username"] . "</td><td>"
                                                 . $row["password"]. "</td>   <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['adminID']. "'>
-                                                  </i> &nbsp <i class='fas fa-trash-alt'></i>". "</td>
+                                                  </i> &nbsp <i class='fas fa-trash-alt' data-toggle='modal' data-target='#deleteAdmin". $row['adminID']. "'></i>". "</td>
                                               </tr>";
 
                                           $sql2 = "SELECT * FROM adminTbl WHERE adminID = ' ".$row['adminID']." ' ";
@@ -309,6 +309,38 @@
                                           </div>
                                         </div>";
 
+
+                                        echo "<div id='deleteAdmin".$row['adminID']."' class='modal fade' role='dialog'>
+
+                                        <div class='modal-dialog'>
+
+                                          <!-- Modal content-->
+                                          <div class='modal-content'>
+                                            <div class='modal-header'>
+
+                                            </div>
+                                            <div class='modal-body'>
+                                              <div class='modal-body p-4 py-5 p-md-5'>
+                                                <h3 class='text-center mb-3'>Delete Admin Account</h3>
+                                                <br>
+                                                <form class='signup-form'  method='POST'>
+                                                    <input type='text' class='form-control' value=' ". $row2["adminID"] ." ' name='deladminID' hidden>
+                                                  <br>
+                                                    <input type='text' class='form-control' value=' ". $row2["username"] ." ' name='admin_Name' readonly>
+                                                  <p> Do you want to delete this Admin Account? </p>
+                                                  <div class='form-group mb-2'>
+                                                    <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnDeleteAdmin'>Delete Admin Account</button>
+                                                  </div>
+                                                </form>
+                                              </div>
+
+                                            </div>
+                                            <div class='modal-footer'>
+                                              <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>";
                                           }
                                           // echo "</table>";
                                           } else { echo "0 results"; }
@@ -464,5 +496,11 @@
         header("Location: tblAdmin.php");
 
     }
+    if(isset($_POST['btnDeleteAdmin'])){
+            $deladmin=$_POST['deladminID'];
+            $sql4 = mysqli_query($conn,"DELETE FROM adminTbl WHERE adminID = $deladmin");
+            header("Location: adminTbl.php");
+
+      }
 ?>
 </html>

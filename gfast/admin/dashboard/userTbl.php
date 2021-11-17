@@ -257,7 +257,8 @@
                                             . $row["lastName"]. "</td><td>" . $row["email"] . "</td>
                                             <td>" . $row["password"] . "</td><td>" . $row["phone"] . "</td>
                                             <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['userID']. "'>
-                                            </i> &nbsp <i class='fas fa-trash-alt'></i>". "</td> </tr>";
+                                            </i> &nbsp <i class='fas fa-trash-alt' data-toggle='modal' data-target='#deleteUser". $row['userID']. "'></i>". "</td>
+                                            </tr>";
 
                                             $sql2 = "SELECT * FROM userTbl WHERE userID = ' ".$row['userID']." ' ";
                                             $result2 = mysqli_query($conn,$sql2);
@@ -319,6 +320,38 @@
 
                                             </div>
                                           </div>";
+
+                                          echo "<div id='deleteUser".$row['userID']."' class='modal fade' role='dialog'>
+
+                                          <div class='modal-dialog'>
+
+                                            <!-- Modal content-->
+                                            <div class='modal-content'>
+                                              <div class='modal-header'>
+
+                                              </div>
+                                              <div class='modal-body'>
+                                                <div class='modal-body p-4 py-5 p-md-5'>
+                                                  <h3 class='text-center mb-3'>Delete User</h3>
+                                                  <br>
+                                                  <form class='signup-form'  method='POST'>
+                                                      <input type='text' class='form-control' value=' ". $row2["userID"] ." ' name='deluserID' hidden>
+                                                    <br>
+                                                      <input type='text' class='form-control' value=' ". $row2["firstName"] . $row2["lastName"] ." ' name='user_Name' readonly>
+                                                    <p> Do you want to delete this User? </p>
+                                                    <div class='form-group mb-2'>
+                                                      <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnDeleteUser'>Delete User</button>
+                                                    </div>
+                                                  </form>
+                                                </div>
+
+                                              </div>
+                                              <div class='modal-footer'>
+                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>";
                                             }
                                             // echo "</table>";
                                             } else { echo "0 results"; }
@@ -434,6 +467,34 @@
             </div>
           </div>
         </div>
+
+        <!-- Modal Delete User -->
+        <div class="modal fade" id="deleteUser<?php echo $row['userID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="ion-ios-close"></span>
+                </button>
+              </div>
+              <div class="modal-body p-4 py-5 p-md-5">
+                <h3 class="text-center mb-3">Delete User</h3>
+                <br>
+                <form action="#" class="signup-form"  method="POST">
+                  <div class="form-group mb-2">
+                    <label for="name">User</label>
+                    <input type="text" class="form-control" placeholder="<?php $row["userID"] ?>" name="deluserID">
+                  </div>
+                  <br>
+                  <div class="form-group mb-2">
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnDeleteUser">Delete User</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
         <!--**********************************
             Content body end
         ***********************************-->
@@ -509,6 +570,12 @@
         header("Location: userTbl.php");
 
     }
+    if(isset($_POST['btnDeleteUser'])){
+            $deluser=$_POST['deluserID'];
+            $sql4 = mysqli_query($conn,"DELETE FROM userTbl WHERE userID = $deluser");
+            header("Location: userTbl.php");
+
+      }
 ?>
 
 

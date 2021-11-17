@@ -253,8 +253,8 @@
                                             // output data of each row
                                             while($row = $result->fetch_assoc()) {
                                             echo "<tr><td>" . $row["company"]. "</td><td>" . $row["name"] . "</td><td>"
-                                            . $row["price"]. "</td>   <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['gasID']. "'>
-                                              </i> &nbsp <i class='fas fa-trash-alt' data toogle='modal'data-target='deleteUser".$row['gasID']. "'></i>". "</td>
+                                            . $row["price"]. "</td>   <td>" . "<i class='fas fa-edit' data-toggle='modal' data-target='#updateGas". $row['gasID']. "'>
+                                              </i> &nbsp <i class='fas fa-trash-alt' data-toggle='modal' data-target='#deleteGas". $row['gasID']. "'></i>". "</td>
                                           </tr>";
 
 
@@ -263,7 +263,7 @@
                                           $row2=mysqli_fetch_assoc($result2);
                                           $user = $row['gasID'];
 
-                                          echo "<div id='updateUser".$row['gasID']."' class='modal fade' role='dialog'>
+                                          echo "<div id='updateGas".$row['gasID']."' class='modal fade' role='dialog'>
 
                                           <div class='modal-dialog'>
 
@@ -274,7 +274,7 @@
                                               </div>
                                               <div class='modal-body'>
                                                 <div class='modal-body p-4 py-5 p-md-5'>
-                                                  <h3 class='text-center mb-3'>Update User</h3>
+                                                  <h3 class='text-center mb-3'>Update Gas Details</h3>
                                                   <br>
                                                   <form class='signup-form'  method='POST'>
                                                       <input type='text' class='form-control' value=' ". $row2["gasID"] ." ' name='gas_ID' hidden>
@@ -306,8 +306,7 @@
                                         </div>";
 
 
-
-                                        echo "<div id='deleteUser".$row['gasID']."' class='modal fade' role='dialog'>
+                                        echo "<div id='deleteGas".$row['gasID']."' class='modal fade' role='dialog'>
 
                                         <div class='modal-dialog'>
 
@@ -318,13 +317,15 @@
                                             </div>
                                             <div class='modal-body'>
                                               <div class='modal-body p-4 py-5 p-md-5'>
-                                                <h3 class='text-center mb-3'>Delete User</h3>
+                                                <h3 class='text-center mb-3'>Delete Gas Type</h3>
                                                 <br>
                                                 <form class='signup-form'  method='POST'>
                                                     <input type='text' class='form-control' value=' ". $row2["gasID"] ." ' name='gas_ID' hidden>
                                                   <br>
+                                                    <input type='text' class='form-control' value=' ". $row2["company"] . $row2["name"] ." ' name='gas_Name' readonly>
+                                                  <p> Do you want to Delete this Gas Type? </p>
                                                   <div class='form-group mb-2'>
-                                                    <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnDeleteGas'>Upate Gas</button>
+                                                    <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnDeleteGas'>Delete Gas</button>
                                                   </div>
                                                 </form>
                                               </div>
@@ -431,7 +432,7 @@
         </div>
 
 
-        <!-- Modal Delete User -->
+        <!-- Modal Delete Gas -->
         <div class="modal fade" id="deleteGas<?php echo $row['gasID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -529,7 +530,7 @@
       }
     if(isset($_POST['btnDeleteGas'])){
             $gas=$_POST['gas_ID'];
-            $sql3 = mysqli_query($conn,"DELETE gasTbl set gasID = $gas");
+            $sql4 = mysqli_query($conn,"DELETE FROM gasTbl WHERE gasID = $gas");
             header("Location: gasTbl.php");
 
       }
