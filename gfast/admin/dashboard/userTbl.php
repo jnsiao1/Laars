@@ -261,6 +261,7 @@
                                             $sql2 = "SELECT * FROM userTbl WHERE userID = ' ".$row['userID']." ' ";
                                             $result2 = mysqli_query($conn,$sql2);
                                             $row2=mysqli_fetch_assoc($result2);
+                                            $user = $row['userID'];
 
                                             echo "<div id='updateUser".$row['userID']."' class='modal fade' role='dialog'>
 
@@ -277,32 +278,33 @@
                                                   <div class='modal-body p-4 py-5 p-md-5'>
                                                     <h3 class='text-center mb-3'>Update User</h3>
                                                     <br>
-                                                    <form action='' class='signup-form'  method='POST'>
-                                                      <input type='text' class='form-control' placeholder=' ". $row["userID"] ." ' name='userid' hidden>
+                                                    <form class='signup-form'  method='POST'>
+                                                        <input type='text' class='form-control' value=' ". $row2["userID"] ." ' name='user_ID' hidden>
                                                       <div class='form-group mb-2'>
                                                         <label for='name'>First Name</label>
-                                                        <input type='text' class='form-control' placeholder=' ". $row["firstName"] ." ' name='fName'>
+                                                        <input type='text' class='form-control' value=' ". $row2["firstName"] ." ' name='fName'>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label for='name'>Last Name</label>
-                                                        <input type='text' class='form-control' placeholder=' ". $row["lastName"] ." ' name='lName'>
+                                                        <input type='text' class='form-control' value=' ". $row2["lastName"] ." ' name='lName'>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label for='email'>Email</label>
-                                                        <input type='text' class='form-control' placeholder=' ". $row["email"] ." ' name='Email' readonly>
+                                                        <input type='text' class='form-control' value=' ". $row2["email"] ." ' name='Email' >
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label >Password</label>
-                                                        <input type='text' class='form-control' placeholder=' ". $row["password"] ." ' name='Password'>
+                                                        <input type='text' class='form-control' value=' ". $row2["password"] ." ' name='Password'>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label >Phone</label>
-                                                        <input type='text' class='form-control' placeholder=' ". $row["phone"] ." ' name='Phone'>
+                                                        <input type='text' class='form-control' value=' ". $row2["phone"] ." ' name='Phone'>
                                                       </div>
                                                       <br>
                                                       <div class='form-group mb-2'>
                                                         <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateUser'>Upate User</button>
                                                       </div>
+
 
                                                     </form>
                                                   </div>
@@ -493,29 +495,20 @@
         //   header("Location: ../index.php");
         // }
     }
-    else if(isset($_POST['btnUpdateUser'])){
-
-        $userid = $POST["userid"];
+  if(isset($_POST['btnUpdateUser'])){
 
         $fName=$_POST['fName'];
+        $user=$_POST['user_ID'];
         $lName=$_POST['lName'];
         $Email=$_POST['Email'];
         $Pwd=$_POST['Password'];
         $Phone=$_POST['Phone'];
-        // $query="INSERT INTO usertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email',SHA('$pwd'), '$phone')"; //for encryption of password utilize SHA()
-        $query2="UPDATE usertbl SET firstName='$fName',lastName='$lName',email='$Email',password='$Pwd',phone='$Phone' WHERE userID = '$userid'";
-        mysqli_query($conn,$query2);
+
+        $sql3 = mysqli_query($conn,"UPDATE usertbl set firstName='$fName',lastName='$lName',email='$Email',password='$Pwd',phone='$Phone' where userID = $user");
         header("Location: userTbl.php");
-        // $count = mysqli_num_rows($result);
-        // if($count ==0)
-        //   echo "<script language='javascript'> alert('Incorrect username or password');</script>";
-        // else{
-        //   $row=mysqli_fetch_assoc($result);
-        //   $_SESSION['login']=$row['email'];
-        //   header("Location: ../index.php");
-        // }
+
     }
 ?>
- ?>
+
 
 </html>
