@@ -419,7 +419,7 @@
 
                       <br>
                       <div class="form-group mb-2">
-                        <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnUpdateAdmin">Upate Admin</button>
+                        <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnUpdateAdmin">Update Admin</button>
                       </div>
 
                     </form>
