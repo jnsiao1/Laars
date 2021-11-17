@@ -115,7 +115,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./userTbl.php" aria-expanded="false">User Table</a></li>
-                            <li><a href="./gasTbl.html" aria-expanded="false">Gas Table</a></li>
+                            <li><a href="./gasTbl.php" aria-expanded="false">Gas Table</a></li>
                         </ul>
                     </li>
                     <!-- <li class="nav-label">Pages</li>
@@ -225,7 +225,7 @@
 
                   <br>
                   <div class="form-group mb-2">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddGas">Add User</button>
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddGas">Add Gas</button>
                   </div>
 
                 </form>
