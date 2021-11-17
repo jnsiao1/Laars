@@ -226,7 +226,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Gas Table</h4>
+                            <h4 class="card-title">Admin Table</h4>
                                 <br>
                                 <button type="button" class="button-19" data-toggle="modal" data-target="#addGas">Add Gas</button>
                                 <div class="table-responsive">
