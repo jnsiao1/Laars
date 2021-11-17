@@ -228,34 +228,35 @@
                             <div class="card-body">
                             <h4 class="card-title">Admin Table</h4>
                                 <br>
-                                <button type="button" class="button-19" data-toggle="modal" data-target="#addGas">Add Gas</button>
+                                <button type="button" class="button-19" data-toggle="modal" data-target="#addGas">Add Admin</button>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th>Company</th>
-                                                <th>Name</th>
-                                                <th>Price</th>
-                                                <th>Edit</th
+                                                <th>Admin ID</th>
+                                                <th>Username</th>
+                                                <th>Password</th>
+                                                <th>Edit</th>
+                                
                                             </tr>
                                         </thead>
                                         <tbody>
                                           <?php
-                                            $sql = "SELECT * FROM gasTbl";
+                                            $sql = "SELECT * FROM admintbl";
                                             $result = $conn->query($sql);
                                             if ($result->num_rows > 0) {
                                             // output data of each row
                                             while($row = $result->fetch_assoc()) {
-                                            echo "<tr><td>" . $row["company"]. "</td><td>" . $row["name"] . "</td><td>"
-                                            . $row["price"]. "</td>   <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['company']. "'>
+                                            echo "<tr><td>" . $row["adminID"]. "</td><td>" . $row["username"] . "</td><td>"
+                                            . $row["password"]. "</td>   <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['adminID']. "'>
                                               </i> &nbsp <i class='fas fa-trash-alt'></i>". "</td>
                                           </tr>";
 
-                                          $sql2 = "SELECT * FROM userTbl WHERE userID = ' ".$row['company']." ' ";
+                                          $sql2 = "SELECT * FROM admintbl WHERE adminID = ' ".$row['adminID']." ' ";
                                           $result2 = mysqli_query($conn,$sql2);
                                           $row2=mysqli_fetch_assoc($result2);
 
-                                          echo "<div id='updateUser".$row['company']."' class='modal fade' role='dialog'>
+                                          echo "<div id='updateUser".$row['adminID']."' class='modal fade' role='dialog'>
 
                                           <div class='modal-dialog'>
 
@@ -266,7 +267,7 @@
                                               </div>
                                               <div class='modal-body'>
                                                 <p>Some text in the modal.</p>"
-                                                .$row['company']. "
+                                                .$row['adminID']. "
                                               </div>
                                               <div class='modal-footer'>
                                                 <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
