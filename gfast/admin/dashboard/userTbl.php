@@ -503,7 +503,7 @@
         $Pwd=$_POST['Password'];
         $Phone=$_POST['Phone'];
         // $query="INSERT INTO usertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email',SHA('$pwd'), '$phone')"; //for encryption of password utilize SHA()
-        $query2="UPDATE usertbl SET firstName='$fName',lastName='$lName',email='$Email',password='$Pwd',phone='$Phone' WHERE userID = $userid";
+        $query2="UPDATE usertbl SET firstName='$fName',lastName='$lName',email='$Email',password='$Pwd',phone='$Phone' WHERE userID = '$userid'";
         mysqli_query($conn,$query2);
         header("Location: userTbl.php");
         // $count = mysqli_num_rows($result);
