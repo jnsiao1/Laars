@@ -249,7 +249,7 @@
                                             while($row = $result->fetch_assoc()) {
                                             echo "<tr><td>" . $row["adminID"]. "</td><td>" . $row["username"] . "</td><td>"
                                             . $row["password"]. "</td>   <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['adminID']. "'>
-                                              </i> &nbsp <i class='fas fa-trash-alt'></i>". "</td>
+                                            </i> &nbsp <i class='fas fa-trash-alt'></i>". "</td>
                                           </tr>";
 
                                           $sql2 = "SELECT * FROM admintbl WHERE adminID = ' ".$row['adminID']." ' ";
