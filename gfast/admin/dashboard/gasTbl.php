@@ -1,3 +1,4 @@
+
 <?php
   ob_start();
   $conn =mysqli_connect("localhost","root","","db_gfast");
@@ -13,85 +14,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>G-FAST : A GPS-driven Delivering Application</title>
+    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Custom Stylesheet -->
     <link href="./plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
-    <!-- modal -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-		<link rel="stylesheet" href="../../modal/css/ionicons.min.css">
-		<link rel="stylesheet" href="../../modal/css/style.css">
-
-    <!-- fa icons -->
-    <link href="../../fa/css/fontawesome.css" rel="stylesheet">
-    <link href="../../fa/css/brands.css" rel="stylesheet">
-    <link href="../../fa/css/solid.css" rel="stylesheet">
-
-    <style>
-        /* CSS */
-        .button-19 {
-        appearance: button;
-        background-color: #1899D6;
-        border: solid transparent;
-        border-radius: 16px;
-        border-width: 0 0 4px;
-        box-sizing: border-box;
-        color: #FFFFFF;
-        cursor: pointer;
-        display: inline-block;
-        font-family: din-round,sans-serif;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: .8px;
-        line-height: 20px;
-        margin: 0;
-        outline: none;
-        overflow: visible;
-        padding: 8px 11px;
-        text-align: center;
-        text-transform: uppercase;
-        touch-action: manipulation;
-        transform: translateZ(0);
-        transition: filter .2s;
-        user-select: none;
-        -webkit-user-select: none;
-        vertical-align: middle;
-        white-space: nowrap;
-        width: 8%;
-        }
-
-        .button-19:after {
-        background-clip: padding-box;
-        background-color: #1CB0F6;
-        border: solid transparent;
-        border-radius: 16px;
-        border-width: 0 0 4px;
-        bottom: -4px;
-        content: "";
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index: -1;
-        }
-
-        .button-19:main,
-        .button-19:focus {
-        user-select: auto;
-        }
-
-        .button-19:hover:not(:disabled) {
-        filter: brightness(1.1);
-        }
-
-        .button-19:disabled {
-        cursor: auto;
-        }
-    </style>
 
 </head>
 
@@ -159,7 +87,7 @@
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        <li><a href="logout.php"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="page-login.php"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -188,7 +116,6 @@
                         <ul aria-expanded="false">
                             <li><a href="./userTbl.php" aria-expanded="false">User Table</a></li>
                             <li><a href="./gasTbl.php" aria-expanded="false">Gas Table</a></li>
-                            <li><a href="./gasTbl.php" aria-expanded="false">Admin Table</a></li>
                         </ul>
                     </li>
                     <!-- <li class="nav-label">Pages</li>
@@ -224,58 +151,43 @@
         <div class="content-body">
 
           <br>
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">User Table</h4>
+                                <h4 class="card-title">Gas Table</h4>
                                 <br>
-                                <button type="button" class="button-19" data-toggle="modal" data-target="#addUser">Add User</button>
+                                <button type="button" class="button-19" data-toggle="modal" data-target="#addGas">Add Gas</button>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th>UserID</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Email</th>
-                                                <th>Password</th>
-                                                <th>Phone</th>
-                                                <th>Edit</th>
+                                                <th>Company</th>
+                                                <th>Name</th>
+                                                <th>Price</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
-
                                           <?php
-                                            $sql = "SELECT * FROM userTbl";
+                                            $sql = "SELECT * FROM gasTbl";
                                             $result = $conn->query($sql);
                                             if ($result->num_rows > 0) {
                                             // output data of each row
                                             while($row = $result->fetch_assoc()) {
-                                            echo "<tr><td>" . $row["userID"]. "</td><td>" . $row["firstName"] . "</td><td>"
-                                            . $row["lastName"]. "</td><td>" . $row["email"] . "</td>
-                                            <td>" . $row["password"] . "</td><td>" . $row["phone"] . "</td>
-                                            <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser data-id='" .$row['userID']."'>
-                                            </i> &nbsp <i class='fas fa-trash-alt'></i>". "</td> </tr>";
+                                            echo "<tr><td>" . $row["company"]. "</td><td>" . $row["name"] . "</td><td>"
+                                            . $row["price"]. "</td>
+                                          </tr>";
                                             }
                                             // echo "</table>";
                                             } else { echo "0 results"; }
                                             // $conn->close();
 
                                            ?>
-
                                         </tbody>
-                                        <tfoot>
-                                            <!-- <tr>
-                                                <th>UserID</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Email</th>
-                                                <th>Password</th>
-                                                <th>Phone</th>
-                                            </tr> -->
-                                        </tfoot>
+
                                     </table>
                                 </div>
                             </div>
@@ -285,9 +197,8 @@
             </div>
             <!-- #/ container -->
         </div>
-
         <!-- Modal Add User -->
-        <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="addGas" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -296,76 +207,25 @@
                 </button>
               </div>
               <div class="modal-body p-4 py-5 p-md-5">
-                <h3 class="text-center mb-3">Add New User</h3>
+                <h3 class="text-center mb-3">Add New Gas</h3>
                 <br>
                 <form action="#" class="signup-form"  method="POST">
                   <div class="form-group mb-2">
-                    <label for="name">First Name</label>
-                    <input type="text" class="form-control" placeholder="" name="fname">
+                    <label for="name">Company</label>
+                    <input type="text" class="form-control" placeholder="" name="company">
                   </div>
                   <div class="form-group mb-2">
-                    <label for="name">Last Name</label>
-                    <input type="text" class="form-control" placeholder="" name="lname">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" placeholder="" name="name">
                   </div>
                   <div class="form-group mb-2">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" placeholder="" name="email">
-                  </div>
-                  <div class="form-group mb-2">
-                    <label >Password</label>
-                    <input type="password" class="form-control" placeholder="" name="password">
-                  </div>
-                  <div class="form-group mb-2">
-                    <label >Phone</label>
-                    <input type="text" class="form-control" placeholder="" name="phone">
-                  </div>
-                  <br>
-                  <div class="form-group mb-2">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddUser">Add User</button>
+                    <label for="email">Price</label>
+                    <input type="text" class="form-control" placeholder="" name="price">
                   </div>
 
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Modal Update User -->
-        <div class="modal fade" id="updateUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true" class="ion-ios-close"></span>
-                </button>
-              </div>
-              <div class="modal-body p-4 py-5 p-md-5">
-                <h3 class="text-center mb-3">Update User</h3>
-                <br>
-                <form action="#" class="signup-form"  method="POST">
-                  <div class="form-group mb-2">
-                    <label for="name">First Name</label>
-                    <input type="text" class="form-control" placeholder="<?php $row["firstName"] ?>" name="fname">
-                  </div>
-                  <div class="form-group mb-2">
-                    <label for="name">Last Name</label>
-                    <input type="text" class="form-control" placeholder="" name="lname">
-                  </div>
-                  <div class="form-group mb-2">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" placeholder="" name="email">
-                  </div>
-                  <div class="form-group mb-2">
-                    <label >Password</label>
-                    <input type="password" class="form-control" placeholder="" name="password">
-                  </div>
-                  <div class="form-group mb-2">
-                    <label >Phone</label>
-                    <input type="text" class="form-control" placeholder="" name="phone">
-                  </div>
                   <br>
                   <div class="form-group mb-2">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddUser">Upate User</button>
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddGas">Add Gas</button>
                   </div>
 
                 </form>
@@ -406,7 +266,6 @@
     <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
     <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
-
     <!-- modal -->
     <script src="../modal/js/jquery.min.js"></script>
     <script src="../modal/js/popper.js"></script>
@@ -414,17 +273,15 @@
     <script src="../modal/js/main.js"></script>
 
 </body>
-
 <?php
-    if(isset($_POST['btnAddUser'])){
-        $fname=$_POST['fname'];
-        $lname=$_POST['lname'];
-        $email=$_POST['email'];
-        $pwd=$_POST['password'];
-        $phone=$_POST['phone'];
-        $query="INSERT INTO usertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email','$pwd', '$phone')";
+    if(isset($_POST['btnAddGas'])){
+        $company=$_POST['company'];
+        $name=$_POST['name'];
+        $price=$_POST['price'];
+
+        $query="INSERT INTO gasTbl (Company, Name, Price) VALUES ('$company','$name', '$price')";
         mysqli_query($conn,$query);
-        header("Location: userTbl.php");
+        header("Location: gasTbl.php");
         // $count = mysqli_num_rows($result);
         // if($count ==0)
         //   echo "<script language='javascript'> alert('Incorrect username or password');</script>";
@@ -435,6 +292,4 @@
         // }
     }
 ?>
- ?>
-
 </html>
