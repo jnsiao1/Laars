@@ -26,6 +26,11 @@
 		<link rel="stylesheet" href="../../modal/css/ionicons.min.css">
 		<link rel="stylesheet" href="../../modal/css/style.css">
 
+    <!-- fa icons -->
+    <link href="../../fa/css/fontawesome.css" rel="stylesheet">
+    <link href="../../fa/css/brands.css" rel="stylesheet">
+    <link href="../../fa/css/solid.css" rel="stylesheet">
+
     <style>
         /* CSS */
         .button-19 {
@@ -182,7 +187,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./userTbl.php" aria-expanded="false">User Table</a></li>
-                            <li><a href="./gasTbl.php" aria-expanded="false">Gas Table</a></li>
+                            <li><a href="./gasTbl.html" aria-expanded="false">Gas Table</a></li>
                         </ul>
                     </li>
                     <!-- <li class="nav-label">Pages</li>
@@ -236,6 +241,7 @@
                                                 <th>Email</th>
                                                 <th>Password</th>
                                                 <th>Phone</th>
+                                                <th>Edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -248,7 +254,68 @@
                                             while($row = $result->fetch_assoc()) {
                                             echo "<tr><td>" . $row["userID"]. "</td><td>" . $row["firstName"] . "</td><td>"
                                             . $row["lastName"]. "</td><td>" . $row["email"] . "</td>
-                                            <td>" . $row["password"] . "</td><td>" . $row["phone"] . "</td></tr>";
+                                            <td>" . $row["password"] . "</td><td>" . $row["phone"] . "</td>
+                                            <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['userID']. "'>
+                                            </i> &nbsp <i class='fas fa-trash-alt'></i>". "</td> </tr>";
+
+                                            $sql2 = "SELECT * FROM userTbl WHERE userID = ' ".$row['userID']." ' ";
+                                            $result2 = mysqli_query($conn,$sql2);
+                                            $row2=mysqli_fetch_assoc($result2);
+
+                                            echo "<div id='updateUser".$row['userID']."' class='modal fade' role='dialog'>
+
+                                            <div class='modal-dialog'>
+
+                                              <!-- Modal content-->
+                                              <div class='modal-content'>
+                                                <div class='modal-header'>
+
+                                                </div>
+                                                <div class='modal-body'>
+
+
+                                                  <div class='modal-body p-4 py-5 p-md-5'>
+                                                    <h3 class='text-center mb-3'>Update User</h3>
+                                                    <br>
+                                                    <form action='' class='signup-form'  method='POST'>
+                                                      <input type='text' class='form-control' placeholder=' ". $row["userID"] ." ' name='userid' hidden>
+                                                      <div class='form-group mb-2'>
+                                                        <label for='name'>First Name</label>
+                                                        <input type='text' class='form-control' placeholder=' ". $row["firstName"] ." ' name='fName'>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label for='name'>Last Name</label>
+                                                        <input type='text' class='form-control' placeholder=' ". $row["lastName"] ." ' name='lName'>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label for='email'>Email</label>
+                                                        <input type='text' class='form-control' placeholder=' ". $row["email"] ." ' name='Email' readonly>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label >Password</label>
+                                                        <input type='text' class='form-control' placeholder=' ". $row["password"] ." ' name='Password'>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label >Phone</label>
+                                                        <input type='text' class='form-control' placeholder=' ". $row["phone"] ." ' name='Phone'>
+                                                      </div>
+                                                      <br>
+                                                      <div class='form-group mb-2'>
+                                                        <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateUser'>Upate User</button>
+                                                      </div>
+
+                                                    </form>
+                                                  </div>
+
+
+                                                </div>
+                                                <div class='modal-footer'>
+                                                  <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                                                </div>
+                                              </div>
+
+                                            </div>
+                                          </div>";
                                             }
                                             // echo "</table>";
                                             } else { echo "0 results"; }
@@ -320,6 +387,50 @@
             </div>
           </div>
         </div>
+
+        <!-- Modal Update User -->
+        <div class="modal fade" id="updateUser<?php echo $row['userID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="ion-ios-close"></span>
+                </button>
+              </div>
+              <div class="modal-body p-4 py-5 p-md-5">
+                <h3 class="text-center mb-3">Update User</h3>
+                <br>
+                <form action="#" class="signup-form"  method="POST">
+                  <div class="form-group mb-2">
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" placeholder="<?php $row["firstName"] ?>" name="fname">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label for="name">Last Name</label>
+                    <input type="text" class="form-control" placeholder="" name="lname">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" placeholder="" name="email">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label >Password</label>
+                    <input type="password" class="form-control" placeholder="" name="password">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label >Phone</label>
+                    <input type="text" class="form-control" placeholder="" name="phone">
+                  </div>
+                  <br>
+                  <div class="form-group mb-2">
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddUser">Upate User</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
         <!--**********************************
             Content body end
         ***********************************-->
@@ -369,8 +480,31 @@
         $email=$_POST['email'];
         $pwd=$_POST['password'];
         $phone=$_POST['phone'];
+        // $query="INSERT INTO usertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email',SHA('$pwd'), '$phone')"; //for encryption of password utilize SHA()
         $query="INSERT INTO usertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email','$pwd', '$phone')";
         mysqli_query($conn,$query);
+        header("Location: userTbl.php");
+        // $count = mysqli_num_rows($result);
+        // if($count ==0)
+        //   echo "<script language='javascript'> alert('Incorrect username or password');</script>";
+        // else{
+        //   $row=mysqli_fetch_assoc($result);
+        //   $_SESSION['login']=$row['email'];
+        //   header("Location: ../index.php");
+        // }
+    }
+    else if(isset($_POST['btnUpdateUser'])){
+
+        $userid = $POST["userid"];
+
+        $fName=$_POST['fName'];
+        $lName=$_POST['lName'];
+        $Email=$_POST['Email'];
+        $Pwd=$_POST['Password'];
+        $Phone=$_POST['Phone'];
+        // $query="INSERT INTO usertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email',SHA('$pwd'), '$phone')"; //for encryption of password utilize SHA()
+        $query2="UPDATE usertbl SET firstName='$fName',lastName='$lName',email='$Email',password='$Pwd',phone='$Phone' WHERE userID = '$userid'";
+        mysqli_query($conn,$query2);
         header("Location: userTbl.php");
         // $count = mysqli_num_rows($result);
         // if($count ==0)
