@@ -159,7 +159,7 @@
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        <li><a href="logout.php"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="page-login.php"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -187,8 +187,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./userTbl.php" aria-expanded="false">User Table</a></li>
-                            <li><a href="./gasTbl.php" aria-expanded="false">Gas Table</a></li>
-                            <li><a href="./gasTbl.php" aria-expanded="false">Admin Table</a></li>
+                            <li><a href="./gasTbl.html" aria-expanded="false">Gas Table</a></li>
                         </ul>
                     </li>
                     <!-- <li class="nav-label">Pages</li>
@@ -256,8 +255,35 @@
                                             echo "<tr><td>" . $row["userID"]. "</td><td>" . $row["firstName"] . "</td><td>"
                                             . $row["lastName"]. "</td><td>" . $row["email"] . "</td>
                                             <td>" . $row["password"] . "</td><td>" . $row["phone"] . "</td>
-                                            <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser data-id='" .$row['userID']."'>
+                                            <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['userID']. "'>
                                             </i> &nbsp <i class='fas fa-trash-alt'></i>". "</td> </tr>";
+
+                                            $sql2 = "SELECT * FROM user WHERE userID = ' ".$row['userID']." ' ";
+                                            // $result2 = $conn->query($sql2);
+                                            $result2 = mysqli_query($conn,$sql2);
+                                            $row2=mysqli_fetch_assoc($result2);
+                                            // $row2 = $result2->fetch_assoc();
+
+                                            // echo "<div id='updateUser".$row['userID']."' class='modal fade' role='dialog'>
+                                            echo "<div id=updateUser ' ".$row['userID']." ' class='modal fade' role='dialog'>
+                                            <div class='modal-dialog'>
+
+                                              <!-- Modal content-->
+                                              <div class='modal-content'>
+                                                <div class='modal-header'>
+
+                                                </div>
+                                                <div class='modal-body'>
+                                                  <p>Some text in the modal.</p>"
+                                                  .$row['firstName']. "
+                                                </div>
+                                                <div class='modal-footer'>
+                                                  <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                                                </div>
+                                              </div>
+
+                                            </div>
+                                          </div>";
                                             }
                                             // echo "</table>";
                                             } else { echo "0 results"; }
@@ -331,7 +357,7 @@
         </div>
 
         <!-- Modal Update User -->
-        <div class="modal fade" id="updateUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="updateUser<?php echo $row['userID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
