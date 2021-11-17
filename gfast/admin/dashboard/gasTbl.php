@@ -236,7 +236,7 @@
                                                 <th>Company</th>
                                                 <th>Name</th>
                                                 <th>Price</th>
-                                                <th>Action</th
+                                                <th>Edit</th
                                             </tr>
                                         </thead>
                                         <tbody>
