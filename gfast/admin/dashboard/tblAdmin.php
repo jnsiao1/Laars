@@ -238,7 +238,7 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
-
+                                                <th>User Id</th>
                                                 <th>Username</th>
                                                 <th>Password</th>
                                                 <th>Edit</th>
@@ -252,9 +252,10 @@
                                             if ($result->num_rows > 0) {
                                             // output data of each row
                                             while($row = $result->fetch_assoc()) {
-                                            echo "<tr><td>" . $row["username"]. "</td><td>" . $row["password"] . "</td>  <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['adminID']. "'>
-                                            </i> &nbsp <i class='fas fa-trash-alt'></i>". "</td>
-                                          </tr>";
+                                                echo "<tr><td>" . $row["adminID"]. "</td><td>" . $row["username"] . "</td><td>"
+                                                . $row["password"]. "</td>   <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['adminID']. "'>
+                                                  </i> &nbsp <i class='fas fa-trash-alt'></i>". "</td>
+                                              </tr>";
 
                                           $sql2 = "SELECT * FROM adminTbl WHERE adminID = ' ".$row['adminID']." ' ";
                                           $result2 = mysqli_query($conn,$sql2);
@@ -291,7 +292,7 @@
 
                                                     <br>
                                                     <div class='form-group mb-2'>
-                                                      <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateAdmin'>Upate Admin</button>
+                                                      <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateAdmin'>Update Admin</button>
                                                     </div>
 
 
