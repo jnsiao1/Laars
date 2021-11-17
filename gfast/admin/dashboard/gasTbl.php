@@ -31,7 +31,7 @@
     <link href="../../fa/css/brands.css" rel="stylesheet">
     <link href="../../fa/css/solid.css" rel="stylesheet">
 
-    <style>
+    
     <style>
         /* CSS */
         .button-19 {
