@@ -238,74 +238,75 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th>Admin ID</th>
+
                                                 <th>Username</th>
                                                 <th>Password</th>
                                                 <th>Edit</th>
-                                
+
                                             </tr>
                                         </thead>
                                         <tbody>
                                           <?php
-                                            $sql = "SELECT * FROM admintbl";
+                                            $sql = "SELECT * FROM adminTbl";
                                             $result = $conn->query($sql);
                                             if ($result->num_rows > 0) {
                                             // output data of each row
                                             while($row = $result->fetch_assoc()) {
-                                            echo "<tr><td>" . $row["adminID"]. "</td><td>" . $row["username"] . "</td><td>"
-                                            . $row["password"]. "</td>   <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['adminID']. "'>
+                                            echo "<tr><td>" . $row["username"]. "</td><td>" . $row["password"] . "</td>  <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['adminID']. "'>
                                             </i> &nbsp <i class='fas fa-trash-alt'></i>". "</td>
                                           </tr>";
 
-                                          $sql2 = "SELECT * FROM admintbl WHERE adminID = ' ".$row['adminID']." ' ";
+                                          $sql2 = "SELECT * FROM adminTbl WHERE adminID = ' ".$row['adminID']." ' ";
                                           $result2 = mysqli_query($conn,$sql2);
                                           $row2=mysqli_fetch_assoc($result2);
+                                          $user = $row['adminID'];
 
                                           echo "<div id='updateUser".$row['adminID']."' class='modal fade' role='dialog'>
 
                                           <div class='modal-dialog'>
 
+                                            <!-- Modal content-->
+                                            <div class='modal-content'>
+                                              <div class='modal-header'>
 
-                                          <!-- Modal content-->
-                                          <div class='modal-content'>
-                                            <div class='modal-header'>
+                                              </div>
+                                              <div class='modal-body'>
 
+
+                                                <div class='modal-body p-4 py-5 p-md-5'>
+                                                  <h3 class='text-center mb-3'>Update Admin</h3>
+                                                  <br>
+                                                  <form class='signup-form'  method='POST'>
+                                                      <input type='text' class='form-control' value=' ". $row2["adminID"] ." ' name='admin_ID' hidden>
+                                                    <div class='form-group mb-2'>
+                                                      <label for='name'>Username</label>
+                                                      <input type='text' class='form-control' value=' ". $row2["username"] ." ' name='username'>
+                                                    </div>
+                                                    <div class='form-group mb-2'>
+                                                      <label for='name'>Password</label>
+                                                      <input type='text' class='form-control' value=' ". $row2["password"] ." ' name='password'>
+                                                    </div>
+
+
+
+                                                    <br>
+                                                    <div class='form-group mb-2'>
+                                                      <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateAdmin'>Upate Admin</button>
+                                                    </div>
+
+
+                                                  </form>
+                                                </div>
+
+
+                                              </div>
+                                              <div class='modal-footer'>
+                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                                              </div>
                                             </div>
-                                            <div class='modal-body'>
-                                            <div class='modal-body p-4 py-5 p-md-5'>
-                                              <h3 class='text-center mb-3'>Update Admin</h3>
-                                              <br>
-                                              <form action='' class='signup-form'  method='POST'>
-                                                <input type='text' class='form-control' placeholder=' ". $row["adminID"] ." ' name='adminID' hidden>
-                                                <div class='form-group mb-2'>
-                                                  <label for='name'>Admin ID</label>
-                                                  <input type='text' class='form-control' placeholder=' ". $row["adminID"] ." ' name='adminID'>
-                                                </div>
-                                                <div class='form-group mb-2'>
-                                                  <label for='name'>Username</label>
-                                                  <input type='text' class='form-control' placeholder=' ". $row["username"] ." ' username='username'>
-                                                </div>
-                                                <div class='form-group mb-2'>
-                                                  <label for='name'>Password</label>
-                                                  <input type='text' class='form-control' placeholder=' ". $row["password"] ." ' password='password'>
-                                                </div>
-                                                <br>
-                                                <div class='form-group mb-2'>
-                                                  <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateAdmin'>Update Admin</button>
-                                                </div>
-
-                                              </form>
-                                            </div>
-
 
                                           </div>
-                                          <div class='modal-footer'>
-                                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-                                          </div>
-                                        </div>
-
-                                      </div>
-                                    </div>";
+                                        </div>";
 
                                           }
                                           // echo "</table>";
@@ -325,7 +326,7 @@
             <!-- #/ container -->
         </div>
         <!-- Modal Add User -->
-        <div class="modal fade" id="addGas" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="addAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -337,10 +338,7 @@
                 <h3 class="text-center mb-3">Add New Admin</h3>
                 <br>
                 <form action="#" class="signup-form"  method="POST">
-                  <div class="form-group mb-2">
-                    <label for="name">Admin ID</label>
-                    <input type="text" class="form-control" placeholder="" name="adminID">
-                  </div>
+
                   <div class="form-group mb-2">
                     <label for="name">Username</label>
                     <input type="text" class="form-control" placeholder="" name="username">
@@ -363,40 +361,39 @@
 
 
         <!-- Modal Update User -->
-        <div class="modal fade" id="updateUser"<?php echo $row['adminID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true" class="ion-ios-close"></span>
-                </button>
-              </div>
-              <div class="modal-body p-4 py-5 p-md-5">
-                <h3 class="text-center mb-3">Update Admin</h3>
-                <br>
-                <form action="#" class="signup-form"  method="POST">
-                  <div class="form-group mb-2">
-                    <label for="name">Admin ID</label>
-                    <input type="text" class="form-control" placeholder="<?php $row["adminID"] ?>" name="adminID">
-                  </div>
-                  <div class="form-group mb-2">
-                    <label for="name">Username</label>
-                    <input type="text" class="form-control" placeholder="" name="username">
-                  </div>
-                  <div class="form-group mb-2">
-                    <label for="email">Password</label>
-                    <input type="text" class="form-control" placeholder="" name="password">
-                  </div>
-                  <br>
-                  <div class="form-group mb-2">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddAdmin">Update Admin</button>
-                  </div>
 
-                </form>
+    	    <div class="modal fade" id="updateAdmin<?php echo $row['adminID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true" class="ion-ios-close"></span>
+                    </button>
+                  </div>
+                  <div class="modal-body p-4 py-5 p-md-5">
+                    <h3 class="text-center mb-3">Update Admin</h3>
+                    <br>
+                    <form action="#" class="signup-form"  method="POST">
+                      <div class="form-group mb-2">
+                        <label for="name">Username</label>
+                        <input type="text" class="form-control" placeholder="<?php $row["username"] ?>" name="username">
+                      </div>
+                      <div class="form-group mb-2">
+                        <label for="name">Pasword</label>
+                        <input type="text" class="form-control" placeholder="" name="pasword">
+                      </div>
+
+
+                      <br>
+                      <div class="form-group mb-2">
+                        <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnUpdateAdmin">Upate Admin</button>
+                      </div>
+
+                    </form>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
         <!--**********************************
             Content body end
         ***********************************-->
@@ -458,11 +455,11 @@
 
     if(isset($_POST['btnUpdateAdmin'])){
 
-        $adminID=$_POST['adminID'];
+        $admin=$_POST['admin_ID'];
         $username=$_POST['username'];
         $password=$_POST['password'];
 
-        $sql3 = mysqli_query($conn,"UPDATE admintbl set adminID='$adminID',username='$username',password='$password' where adminID = $adminID");
+        $sql3 = mysqli_query($conn,"UPDATE adminTbl set username='$username',password='$password' where adminID = $admin");
         header("Location: tblAdmin.php");
 
     }
