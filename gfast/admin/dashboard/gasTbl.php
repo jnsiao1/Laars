@@ -26,6 +26,12 @@
 
     <link rel="stylesheet" href="../../modal/css/ionicons.min.css">
     <link rel="stylesheet" href="../../modal/css/style.css">
+
+    <link href="../../fa/css/fontawesome.css" rel="stylesheet">
+    <link href="../../fa/css/brands.css" rel="stylesheet">
+    <link href="../../fa/css/solid.css" rel="stylesheet">
+
+    <style>
     <style>
         /* CSS */
         .button-19 {
