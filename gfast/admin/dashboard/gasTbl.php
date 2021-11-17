@@ -31,7 +31,7 @@
     <link href="../../fa/css/brands.css" rel="stylesheet">
     <link href="../../fa/css/solid.css" rel="stylesheet">
 
-    
+
     <style>
         /* CSS */
         .button-19 {
@@ -271,16 +271,40 @@
 
                                               </div>
                                               <div class='modal-body'>
-                                                <p>Some text in the modal.</p>"
-                                                .$row['company']. "
-                                              </div>
-                                              <div class='modal-footer'>
-                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-                                              </div>
-                                            </div>
+                                              <div class='modal-body p-4 py-5 p-md-5'>
+                                                <h3 class='text-center mb-3'>Update User</h3>
+                                                <br>
+                                                <form action='' class='signup-form'  method='POST'>
+                                                  <input type='text' class='form-control' placeholder=' ". $row["company"] ." ' name='company' hidden>
+                                                  <div class='form-group mb-2'>
+                                                    <label for='name'>Company</label>
+                                                    <input type='text' class='form-control' placeholder=' ". $row["company"] ." ' name='company'>
+                                                  </div>
+                                                  <div class='form-group mb-2'>
+                                                    <label for='name'>Name</label>
+                                                    <input type='text' class='form-control' placeholder=' ". $row["name"] ." ' name='name'>
+                                                  </div>
+                                                  <div class='form-group mb-2'>
+                                                    <label for='name'>Price</label>
+                                                    <input type='text' class='form-control' placeholder=' ". $row["price"] ." ' name='price'>
+                                                  </div>
+                                                  <br>
+                                                  <div class='form-group mb-2'>
+                                                    <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateUser'>Upate User</button>
+                                                  </div>
 
+                                                </form>
+                                              </div>
+
+
+                                            </div>
+                                            <div class='modal-footer'>
+                                              <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                                            </div>
                                           </div>
-                                        </div>";
+
+                                        </div>
+                                      </div>";
 
                                             }
                                             // echo "</table>";
