@@ -265,27 +265,52 @@
 
                                           <div class='modal-dialog'>
 
-                                            <!-- Modal content-->
-                                            <div class='modal-content'>
-                                              <div class='modal-header'>
 
-                                              </div>
-                                              <div class='modal-body'>
-                                                <p>Some text in the modal.</p>"
-                                                .$row['adminID']. "
-                                              </div>
-                                              <div class='modal-footer'>
-                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-                                              </div>
+                                          <!-- Modal content-->
+                                          <div class='modal-content'>
+                                            <div class='modal-header'>
+
+                                            </div>
+                                            <div class='modal-body'>
+                                            <div class='modal-body p-4 py-5 p-md-5'>
+                                              <h3 class='text-center mb-3'>Update Admin</h3>
+                                              <br>
+                                              <form action='' class='signup-form'  method='POST'>
+                                                <input type='text' class='form-control' placeholder=' ". $row["adminID"] ." ' name='adminID' hidden>
+                                                <div class='form-group mb-2'>
+                                                  <label for='name'>Company</label>
+                                                  <input type='text' class='form-control' placeholder=' ". $row["adminID"] ." ' name='adminID'>
+                                                </div>
+                                                <div class='form-group mb-2'>
+                                                  <label for='name'>Name</label>
+                                                  <input type='text' class='form-control' placeholder=' ". $row["username"] ." ' username='username'>
+                                                </div>
+                                                <div class='form-group mb-2'>
+                                                  <label for='name'>Price</label>
+                                                  <input type='text' class='form-control' placeholder=' ". $row["password"] ." ' password='password'>
+                                                </div>
+                                                <br>
+                                                <div class='form-group mb-2'>
+                                                  <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateAdmin'>Update Admin</button>
+                                                </div>
+
+                                              </form>
                                             </div>
 
-                                          </div>
-                                        </div>";
 
-                                            }
-                                            // echo "</table>";
-                                            } else { echo "0 results"; }
-                                            // $conn->close();
+                                          </div>
+                                          <div class='modal-footer'>
+                                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                                          </div>
+                                        </div>
+
+                                      </div>
+                                    </div>";
+
+                                          }
+                                          // echo "</table>";
+                                          } else { echo "0 results"; }
+                                          // $conn->close();
 
                                            ?>
                                         </tbody>
@@ -338,7 +363,7 @@
 
 
         <!-- Modal Update User -->
-        <div class="modal fade" id="updateUser<?php echo $row['adminID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="updateUser"<?php echo $row['adminID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
