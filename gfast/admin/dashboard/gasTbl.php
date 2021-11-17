@@ -14,12 +14,80 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>G-FAST : A GPS-driven Delivering Application</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Custom Stylesheet -->
     <link href="./plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- modal -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../modal/css/ionicons.min.css">
+    <link rel="stylesheet" href="../../modal/css/style.css">
+    <style>
+        /* CSS */
+        .button-19 {
+        appearance: button;
+        background-color: #1899D6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: din-round,sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .8px;
+        line-height: 20px;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 8px 11px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter .2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 8%;
+        }
+
+        .button-19:after {
+        background-clip: padding-box;
+        background-color: #1CB0F6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+        }
+
+        .button-19:main,
+        .button-19:focus {
+        user-select: auto;
+        }
+
+        .button-19:hover:not(:disabled) {
+        filter: brightness(1.1);
+        }
+
+        .button-19:disabled {
+        cursor: auto;
+        }
+    </style>
+
 
 </head>
 

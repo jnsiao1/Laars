@@ -272,8 +272,42 @@
 
                                                 </div>
                                                 <div class='modal-body'>
-                                                  <p>Some text in the modal.</p>"
-                                                  .$row['lastName']. "
+
+
+                                                  <div class='modal-body p-4 py-5 p-md-5'>
+                                                    <h3 class='text-center mb-3'>Update User</h3>
+                                                    <br>
+                                                    <form action='' class='signup-form'  method='POST'>
+                                                      <input type='text' class='form-control' placeholder=' ". $row["userID"] ." ' name='userid' hidden>
+                                                      <div class='form-group mb-2'>
+                                                        <label for='name'>First Name</label>
+                                                        <input type='text' class='form-control' placeholder=' ". $row["firstName"] ." ' name='fName'>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label for='name'>Last Name</label>
+                                                        <input type='text' class='form-control' placeholder=' ". $row["lastName"] ." ' name='lName'>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label for='email'>Email</label>
+                                                        <input type='text' class='form-control' placeholder=' ". $row["email"] ." ' name='Email' readonly>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label >Password</label>
+                                                        <input type='text' class='form-control' placeholder=' ". $row["password"] ." ' name='Password'>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label >Phone</label>
+                                                        <input type='text' class='form-control' placeholder=' ". $row["phone"] ." ' name='Phone'>
+                                                      </div>
+                                                      <br>
+                                                      <div class='form-group mb-2'>
+                                                        <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateUser'>Upate User</button>
+                                                      </div>
+
+                                                    </form>
+                                                  </div>
+
+
                                                 </div>
                                                 <div class='modal-footer'>
                                                   <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
@@ -446,8 +480,31 @@
         $email=$_POST['email'];
         $pwd=$_POST['password'];
         $phone=$_POST['phone'];
+        // $query="INSERT INTO usertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email',SHA('$pwd'), '$phone')"; //for encryption of password utilize SHA()
         $query="INSERT INTO usertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email','$pwd', '$phone')";
         mysqli_query($conn,$query);
+        header("Location: userTbl.php");
+        // $count = mysqli_num_rows($result);
+        // if($count ==0)
+        //   echo "<script language='javascript'> alert('Incorrect username or password');</script>";
+        // else{
+        //   $row=mysqli_fetch_assoc($result);
+        //   $_SESSION['login']=$row['email'];
+        //   header("Location: ../index.php");
+        // }
+    }
+    else if(isset($_POST['btnUpdateUser'])){
+
+        $userid = $POST["userid"];
+
+        $fName=$_POST['fName'];
+        $lName=$_POST['lName'];
+        $Email=$_POST['Email'];
+        $Pwd=$_POST['Password'];
+        $Phone=$_POST['Phone'];
+        // $query="INSERT INTO usertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email',SHA('$pwd'), '$phone')"; //for encryption of password utilize SHA()
+        $query2="UPDATE usertbl SET firstName='$fName',lastName='$lName',email='$Email',password='$Pwd',phone='$Phone' WHERE userID = '$userid'";
+        mysqli_query($conn,$query2);
         header("Location: userTbl.php");
         // $count = mysqli_num_rows($result);
         // if($count ==0)
