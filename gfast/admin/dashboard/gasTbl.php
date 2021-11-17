@@ -225,7 +225,7 @@
 
                   <br>
                   <div class="form-group mb-2">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddGas">Add User</button>
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddGas">Add Gas</button>
                   </div>
 
                 </form>
