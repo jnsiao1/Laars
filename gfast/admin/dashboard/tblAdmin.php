@@ -30,7 +30,7 @@
     <link href="../../fa/css/fontawesome.css" rel="stylesheet">
     <link href="../../fa/css/brands.css" rel="stylesheet">
     <link href="../../fa/css/solid.css" rel="stylesheet">
-    
+
     <style>
         /* CSS */
         .button-19 {
@@ -309,25 +309,25 @@
                 </button>
               </div>
               <div class="modal-body p-4 py-5 p-md-5">
-                <h3 class="text-center mb-3">Add New Gas</h3>
+                <h3 class="text-center mb-3">Add New Admin</h3>
                 <br>
                 <form action="#" class="signup-form"  method="POST">
                   <div class="form-group mb-2">
-                    <label for="name">Company</label>
-                    <input type="text" class="form-control" placeholder="" name="company">
+                    <label for="name">Admin ID</label>
+                    <input type="text" class="form-control" placeholder="" name="adminID">
                   </div>
                   <div class="form-group mb-2">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" placeholder="" name="name">
+                    <label for="name">Username</label>
+                    <input type="text" class="form-control" placeholder="" name="username">
                   </div>
                   <div class="form-group mb-2">
-                    <label for="email">Price</label>
-                    <input type="text" class="form-control" placeholder="" name="price">
+                    <label for="name">Password</label>
+                    <input type="text" class="form-control" placeholder="" name="password">
                   </div>
 
                   <br>
                   <div class="form-group mb-2">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddGas">Add Gas</button>
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddAdmin">Add Admin</button>
                   </div>
 
                 </form>
@@ -338,7 +338,7 @@
 
 
         <!-- Modal Update User -->
-        <div class="modal fade" id="updateUser<?php echo $row['company']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="updateUser<?php echo $row['adminID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -347,24 +347,24 @@
                 </button>
               </div>
               <div class="modal-body p-4 py-5 p-md-5">
-                <h3 class="text-center mb-3">Update User</h3>
+                <h3 class="text-center mb-3">Update Admin</h3>
                 <br>
                 <form action="#" class="signup-form"  method="POST">
                   <div class="form-group mb-2">
-                    <label for="name">Company</label>
-                    <input type="text" class="form-control" placeholder="<?php $row["company"] ?>" name="company">
+                    <label for="name">Admin ID</label>
+                    <input type="text" class="form-control" placeholder="<?php $row["adminID"] ?>" name="adminID">
                   </div>
                   <div class="form-group mb-2">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" placeholder="" name="name">
+                    <label for="name">Username</label>
+                    <input type="text" class="form-control" placeholder="" name="Username">
                   </div>
                   <div class="form-group mb-2">
-                    <label for="email">Price</label>
-                    <input type="text" class="form-control" placeholder="" name="price">
+                    <label for="email">Password</label>
+                    <input type="text" class="form-control" placeholder="" name="password">
                   </div>
                   <br>
                   <div class="form-group mb-2">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddUser">Upate User</button>
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddAdmin">Upate Admin</button>
                   </div>
 
                 </form>
@@ -413,14 +413,14 @@
 
 </body>
 <?php
-    if(isset($_POST['btnAddGas'])){
-        $company=$_POST['company'];
-        $name=$_POST['name'];
-        $price=$_POST['price'];
+    if(isset($_POST['btnAddAdmin'])){
+        $adminID=$_POST['adminID'];
+        $username=$_POST['username'];
+        $password=$_POST['password'];
 
-        $query="INSERT INTO gasTbl (Company, Name, Price) VALUES ('$company','$name', '$price')";
+        $query="INSERT INTO admintbl (adminID,username,password) VALUES ('$adminID','$username', '$password')";
         mysqli_query($conn,$query);
-        header("Location: gasTbl.php");
+        header("Location: tblAdmin.php");
         // $count = mysqli_num_rows($result);
         // if($count ==0)
         //   echo "<script language='javascript'> alert('Incorrect username or password');</script>";
