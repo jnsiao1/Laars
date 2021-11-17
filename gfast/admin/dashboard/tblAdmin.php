@@ -278,15 +278,15 @@
                                               <form action='' class='signup-form'  method='POST'>
                                                 <input type='text' class='form-control' placeholder=' ". $row["adminID"] ." ' name='adminID' hidden>
                                                 <div class='form-group mb-2'>
-                                                  <label for='name'>Company</label>
+                                                  <label for='name'>Admin ID</label>
                                                   <input type='text' class='form-control' placeholder=' ". $row["adminID"] ." ' name='adminID'>
                                                 </div>
                                                 <div class='form-group mb-2'>
-                                                  <label for='name'>Name</label>
+                                                  <label for='name'>Username</label>
                                                   <input type='text' class='form-control' placeholder=' ". $row["username"] ." ' username='username'>
                                                 </div>
                                                 <div class='form-group mb-2'>
-                                                  <label for='name'>Price</label>
+                                                  <label for='name'>Password</label>
                                                   <input type='text' class='form-control' placeholder=' ". $row["password"] ." ' password='password'>
                                                 </div>
                                                 <br>
@@ -381,7 +381,7 @@
                   </div>
                   <div class="form-group mb-2">
                     <label for="name">Username</label>
-                    <input type="text" class="form-control" placeholder="" name="Username">
+                    <input type="text" class="form-control" placeholder="" name="username">
                   </div>
                   <div class="form-group mb-2">
                     <label for="email">Password</label>
@@ -389,7 +389,7 @@
                   </div>
                   <br>
                   <div class="form-group mb-2">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddAdmin">Upate Admin</button>
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddAdmin">Update Admin</button>
                   </div>
 
                 </form>
@@ -454,6 +454,17 @@
         //   $_SESSION['login']=$row['email'];
         //   header("Location: ../index.php");
         // }
+    }
+
+    if(isset($_POST['btnUpdateAdmin'])){
+
+        $adminID=$_POST['adminID'];
+        $username=$_POST['username'];
+        $password=$_POST['password'];
+
+        $sql3 = mysqli_query($conn,"UPDATE admintbl set adminID='$adminID',username='$username',password='$password' where adminID = $adminID");
+        header("Location: tblAdmin.php");
+
     }
 ?>
 </html>
