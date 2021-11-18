@@ -16,6 +16,46 @@ session_start();
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
     <link href="css/style.css" rel="stylesheet">
 
+    <style>
+      /* CSS */
+      .button-9 {
+      appearance: button;
+      backface-visibility: hidden;
+      background-color: #405cf5;
+      border-radius: 6px;
+      border-width: 0;
+      box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+      font-size: 100%;
+      height: 44px;
+      line-height: 1.15;
+      margin: 12px 0 0;
+      outline: none;
+      overflow: hidden;
+      padding: 0 25px;
+      position: relative;
+      text-align: center;
+      text-transform: none;
+      transform: translateZ(0);
+      transition: all .2s,box-shadow .08s ease-in;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      width: 100%;
+      }
+
+      .button-9:disabled {
+      cursor: default;
+      }
+
+      .button-9:focus {
+      box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+      }
+    </style>
+
 </head>
 
 <body class="h-100">
@@ -55,7 +95,7 @@ session_start();
                                         <input type="password" class="form-control" placeholder="Password" name="password">
                                     </div>
                                     <!-- <input class="btn login-form__btn submit w-100" type="submit" name="btnLogin">Log In</button> -->
-                                    	<input type="submit" value="Login" name="btnLogin">
+                                    	<input class="button-9" type="submit" value="Login" name="btnLogin">
                                 </form>
                                 <!-- <p class="mt-5 login-form__footer">Dont have account? <a href="page-register.html" class="text-primary">Sign Up</a> now</p> -->
                             </div>
