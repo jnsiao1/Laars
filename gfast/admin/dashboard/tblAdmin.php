@@ -233,7 +233,7 @@
                             <div class="card-body">
                             <h4 class="card-title">Admin Table</h4>
                                 <br>
-                                <button type="button" class="button-19" data-toggle="modal" data-target="#addGas">Add Admin</button>
+                                <button type="button" class="button-19" data-toggle="modal" data-target="#addAdmin">Add Admin</button>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
