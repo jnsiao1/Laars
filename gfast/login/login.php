@@ -171,6 +171,52 @@ session_start();
       text-decoration:none;
       color:#2c7715;
       }
+
+      /* CSS */
+      .button-5 {
+        align-items: center;
+        background-clip: padding-box;
+        background-color: #fa6400;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 1.25;
+        margin: 0;
+        min-height: 3rem;
+        padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+        position: relative;
+        text-decoration: none;
+        transition: all 250ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        width: auto;
+      }
+
+      .button-5:hover,
+      .button-5:focus {
+        background-color: #fb8332;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+      }
+
+      .button-5:hover {
+        transform: translateY(-1px);
+      }
+
+      .button-5:active {
+        background-color: #c85000;
+        box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+        transform: translateY(0);
+      }
     </style>
     <!-- Core JS -->
     <!-- <script src="js/scripts.js"></script> -->
@@ -199,10 +245,10 @@ session_start();
             <form action="" method="POST" >
       				<input type="text" placeholder="Email" name="logEmail">
       				<input type="password" placeholder="Password" style="margin-bottom:60px" name="logPass">
-      				<input type="submit" value="Login" name="btnLogin">
+      				<input class="button-5" type="submit" value="Login" name="btnLogin"> &nbsp &nbsp &nbsp <a href="">Forgot password?</a>
               <!-- <button type="submit" form="logForm" value="Submit">Log In</button> -->
             </form>
-    				<a href="">Forgot password?</a>
+
     			</div>
     			<div class="register-show">
     				<h2>REGISTER</h2>
@@ -212,7 +258,7 @@ session_start();
       				<input type="text" placeholder="Email" name="regEmail">
       				<input type="password" placeholder="Password" name="regPass">
       				<input type="text" placeholder="Phone" name="phone">
-      				<input type="submit" value="Register" name="btnRegister">
+      				<input class="button-5" type="submit" value="Register" name="btnRegister">
             </form>
     			</div>
     		</div>
