@@ -499,7 +499,7 @@
     if(isset($_POST['btnDeleteAdmin'])){
             $deladmin=$_POST['deladminID'];
             $sql4 = mysqli_query($conn,"DELETE FROM adminTbl WHERE adminID = $deladmin");
-            header("Location: adminTbl.php");
+            header("Location: tblAdmin.php");
 
       }
 ?>
