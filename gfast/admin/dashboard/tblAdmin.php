@@ -279,14 +279,14 @@
                                                   <h3 class='text-center mb-3'>Update Admin</h3>
                                                   <br>
                                                   <form class='signup-form'  method='POST'>
-                                                      <input type='text' class='form-control' value=' ". $row2["adminID"] ." ' name='admin_ID' hidden>
+                                                      <input type='text' class='form-control' value='". $row2["adminID"] ."' name='admin_ID' hidden>
                                                     <div class='form-group mb-2'>
                                                       <label for='name'>Username</label>
-                                                      <input type='text' class='form-control' value=' ". $row2["username"] ." ' name='username'>
+                                                      <input type='text' class='form-control' value='". $row2["username"] ."' name='username'>
                                                     </div>
                                                     <div class='form-group mb-2'>
                                                       <label for='name'>Password</label>
-                                                      <input type='text' class='form-control' value=' ". $row2["password"] ." ' name='password'>
+                                                      <input type='text' class='form-control' value='". $row2["password"] ."' name='password'>
                                                     </div>
 
 

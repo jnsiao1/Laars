@@ -278,18 +278,18 @@
                                                   <h3 class='text-center mb-3'>Update Gas Details</h3>
                                                   <br>
                                                   <form class='signup-form'  method='POST'>
-                                                      <input type='text' class='form-control' value=' ". $row2["gasID"] ." ' name='gas_ID' hidden>
+                                                      <input type='text' class='form-control' value='". $row2["gasID"] ."' name='gas_ID' hidden>
                                                     <div class='form-group mb-2'>
                                                       <label for='name'>Company</label>
-                                                      <input type='text' class='form-control' value=' ". $row2["company"] ." ' name='company'>
+                                                      <input type='text' class='form-control' value='". $row2["company"] ."' name='company'>
                                                     </div>
                                                     <div class='form-group mb-2'>
                                                       <label for='name'>Name</label>
-                                                      <input type='text' class='form-control' value=' ". $row2["name"] ." ' name='name'>
+                                                      <input type='text' class='form-control' value='". $row2["name"] ."' name='name'>
                                                     </div>
                                                     <div class='form-group mb-2'>
                                                       <label for='email'>Price</label>
-                                                      <input type='text' class='form-control' value=' ". $row2["price"] ." ' name='price' >
+                                                      <input type='text' class='form-control' value='". $row2["price"] ."' name='price' >
                                                     </div>
                                                     <br>
                                                     <div class='form-group mb-2'>
@@ -323,7 +323,7 @@
                                                 <form class='signup-form'  method='POST'>
                                                     <input type='text' class='form-control' value=' ". $row2["gasID"] ." ' name='gas_ID' hidden>
                                                   <br>
-                                                    <input type='text' class='form-control' value=' ". $row2["company"] . $row2["name"] ." ' name='gas_Name' readonly>
+                                                    <input type='text' class='form-control' value='". $row2["company"] ." " . $row2["name"] ."' name='gas_Name' readonly>
                                                   <p> Do you want to Delete this Gas Type? </p>
                                                   <div class='form-group mb-2'>
                                                     <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnDeleteGas'>Delete Gas</button>

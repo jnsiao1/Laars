@@ -282,26 +282,26 @@
                                                     <h3 class='text-center mb-3'>Update User</h3>
                                                     <br>
                                                     <form class='signup-form'  method='POST'>
-                                                        <input type='text' class='form-control' value=' ". $row2["userID"] ." ' name='user_ID' hidden>
+                                                        <input type='text' class='form-control' value='". $row2["userID"] ."' name='user_ID' hidden>
                                                       <div class='form-group mb-2'>
                                                         <label for='name'>First Name</label>
-                                                        <input type='text' class='form-control' value=' ". $row2["firstName"] ." ' name='fName'>
+                                                        <input type='text' class='form-control' value='". $row2["firstName"] ."' name='fName'>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label for='name'>Last Name</label>
-                                                        <input type='text' class='form-control' value=' ". $row2["lastName"] ." ' name='lName'>
+                                                        <input type='text' class='form-control' value='". $row2["lastName"] ."' name='lName'>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label for='email'>Email</label>
-                                                        <input type='text' class='form-control' value=' ". $row2["email"] ." ' name='Email' >
+                                                        <input type='text' class='form-control' value='". $row2["email"] ."' name='Email' >
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label >Password</label>
-                                                        <input type='text' class='form-control' value=' ". $row2["password"] ." ' name='Password'>
+                                                        <input type='text' class='form-control' value='". $row2["password"] ."' name='Password'>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label >Phone</label>
-                                                        <input type='text' class='form-control' value=' ". $row2["phone"] ." ' name='Phone'>
+                                                        <input type='text' class='form-control' value='". $row2["phone"] ."' name='Phone'>
                                                       </div>
                                                       <br>
                                                       <div class='form-group mb-2'>
@@ -338,7 +338,7 @@
                                                   <form class='signup-form'  method='POST'>
                                                       <input type='text' class='form-control' value=' ". $row2["userID"] ." ' name='deluserID' hidden>
                                                     <br>
-                                                      <input type='text' class='form-control' value=' ". $row2["firstName"] . $row2["lastName"] ." ' name='user_Name' readonly>
+                                                      <input type='text' class='form-control' value=' ". $row2["firstName"] ." " . $row2["lastName"] ." ' name='user_Name' readonly>
                                                     <p> Do you want to delete this User? </p>
                                                     <div class='form-group mb-2'>
                                                       <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnDeleteUser'>Delete User</button>

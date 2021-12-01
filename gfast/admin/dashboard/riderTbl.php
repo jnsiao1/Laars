@@ -282,26 +282,26 @@
                                                     <h3 class='text-center mb-3'>Update Rider</h3>
                                                     <br>
                                                     <form class='signup-form'  method='POST'>
-                                                        <input type='text' class='form-control' value=' ". $row2["riderID"] ." ' name='rider_ID' hidden>
+                                                        <input type='text' class='form-control' value='". $row2["riderID"] ."' name='rider_ID' hidden>
                                                       <div class='form-group mb-2'>
                                                         <label for='name'>First Name</label>
-                                                        <input type='text' class='form-control' value=' ". $row2["firstName"] ." ' name='fName'>
+                                                        <input type='text' class='form-control' value='". $row2["firstName"] ."' name='fName'>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label for='name'>Last Name</label>
-                                                        <input type='text' class='form-control' value=' ". $row2["lastName"] ." ' name='lName'>
+                                                        <input type='text' class='form-control' value='". $row2["lastName"] ."' name='lName'>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label for='email'>Email</label>
-                                                        <input type='text' class='form-control' value=' ". $row2["email"] ." ' name='Email' >
+                                                        <input type='text' class='form-control' value='". $row2["email"] ."' name='Email' >
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label >Password</label>
-                                                        <input type='text' class='form-control' value=' ". $row2["password"] ." ' name='Password'>
+                                                        <input type='text' class='form-control' value='". $row2["password"] ."' name='Password'>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label >Phone</label>
-                                                        <input type='text' class='form-control' value=' ". $row2["phone"] ." ' name='Phone'>
+                                                        <input type='text' class='form-control' value='". $row2["phone"] ."' name='Phone'>
                                                       </div>
                                                       <br>
                                                       <div class='form-group mb-2'>
@@ -338,7 +338,7 @@
                                                   <form class='signup-form'  method='POST'>
                                                       <input type='text' class='form-control' value=' ". $row2["riderID"] ." ' name='delriderID' hidden>
                                                     <br>
-                                                      <input type='text' class='form-control' value=' ". $row2["firstName"] . $row2["lastName"] ." ' name='rider_Name' readonly>
+                                                      <input type='text' class='form-control' value=' ". $row2["firstName"] ." " . $row2["lastName"] ." ' name='rider_Name' readonly>
                                                     <p> Do you want to delete this Rider? </p>
                                                     <div class='form-group mb-2'>
                                                       <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnDeleteRider'>Delete Rider</button>
@@ -425,77 +425,7 @@
           </div>
         </div>
 
-        <!-- Modal Update User -->
-        <div class="modal fade" id="updateRider<?php echo $row['riderID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true" class="ion-ios-close"></span>
-                </button>
-              </div>
-              <div class="modal-body p-4 py-5 p-md-5">
-                <h3 class="text-center mb-3">Update Rider</h3>
-                <br>
-                <form action="#" class="signup-form"  method="POST">
-                  <div class="form-group mb-2">
-                    <label for="name">First Name</label>
-                    <input type="text" class="form-control" placeholder="<?php $row["firstName"] ?>" name="fname">
-                  </div>
-                  <div class="form-group mb-2">
-                    <label for="name">Last Name</label>
-                    <input type="text" class="form-control" placeholder="" name="lname">
-                  </div>
-                  <div class="form-group mb-2">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" placeholder="" name="email">
-                  </div>
-                  <div class="form-group mb-2">
-                    <label >Password</label>
-                    <input type="password" class="form-control" placeholder="" name="password">
-                  </div>
-                  <div class="form-group mb-2">
-                    <label >Phone</label>
-                    <input type="text" class="form-control" placeholder="" name="phone">
-                  </div>
-                  <br>
-                  <div class="form-group mb-2">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddRider">Upate Rider</button>
-                  </div>
 
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Modal Delete User -->
-        <div class="modal fade" id="deleteRider<?php echo $row['riderID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true" class="ion-ios-close"></span>
-                </button>
-              </div>
-              <div class="modal-body p-4 py-5 p-md-5">
-                <h3 class="text-center mb-3">Delete Rider</h3>
-                <br>
-                <form action="#" class="signup-form"  method="POST">
-                  <div class="form-group mb-2">
-                    <label for="name">Rider</label>
-                    <input type="text" class="form-control" placeholder="<?php $row["riderID"] ?>" name="delriderID">
-                  </div>
-                  <br>
-                  <div class="form-group mb-2">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnDeleteRider">Delete Rider</button>
-                  </div>
-
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
         <!--**********************************
             Content body end
         ***********************************-->
