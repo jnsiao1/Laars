@@ -1,4 +1,3 @@
-
 <?php
   ob_start();
   $conn =mysqli_connect("localhost","root","","db_gfast");
@@ -24,9 +23,10 @@
     <!-- modal -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../modal/css/ionicons.min.css">
-    <link rel="stylesheet" href="../../modal/css/style.css">
+		<link rel="stylesheet" href="../../modal/css/ionicons.min.css">
+		<link rel="stylesheet" href="../../modal/css/style.css">
 
+    <!-- fa icons -->
     <link href="../../fa/css/fontawesome.css" rel="stylesheet">
     <link href="../../fa/css/brands.css" rel="stylesheet">
     <link href="../../fa/css/solid.css" rel="stylesheet">
@@ -92,7 +92,6 @@
         cursor: auto;
         }
     </style>
-
 
 </head>
 
@@ -226,44 +225,104 @@
         <div class="content-body">
 
           <br>
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                            <h4 class="card-title">Admin Table</h4>
+                                <h4 class="card-title">Rider Table</h4>
                                 <br>
-                                <button type="button" class="button-19" data-toggle="modal" data-target="#addAdmin">Add Admin</button>
+                                <button type="button" class="button-19" data-toggle="modal" data-target="#addRider">Add Rider</button>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th>User Id</th>
-                                                <th>Username</th>
+                                                <th>RiderID</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Email</th>
                                                 <th>Password</th>
+                                                <th>Phone</th>
                                                 <th>Edit</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
+
                                           <?php
-                                            $sql = "SELECT * FROM adminTbl";
+                                            $sql = "SELECT * FROM riderTbl";
                                             $result = $conn->query($sql);
                                             if ($result->num_rows > 0) {
                                             // output data of each row
                                             while($row = $result->fetch_assoc()) {
-                                                echo "<tr><td>" . $row["adminID"]. "</td><td>" . $row["username"] . "</td><td>"
-                                                . $row["password"]. "</td>   <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateUser".$row['adminID']. "'>
-                                                  </i> &nbsp <i class='fas fa-trash-alt' data-toggle='modal' data-target='#deleteAdmin". $row['adminID']. "'></i>". "</td>
-                                              </tr>";
+                                            echo "<tr><td>" . $row["riderID"]. "</td><td>" . $row["firstName"] . "</td><td>"
+                                            . $row["lastName"]. "</td><td>" . $row["email"] . "</td>
+                                            <td>" . $row["password"] . "</td><td>" . $row["phone"] . "</td>
+                                            <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateRider".$row['riderID']. "'>
+                                            </i> &nbsp <i class='fas fa-trash-alt' data-toggle='modal' data-target='#deleteRider". $row['riderID']. "'></i>". "</td>
+                                            </tr>";
 
-                                          $sql2 = "SELECT * FROM adminTbl WHERE adminID = ' ".$row['adminID']." ' ";
-                                          $result2 = mysqli_query($conn,$sql2);
-                                          $row2=mysqli_fetch_assoc($result2);
-                                          $user = $row['adminID'];
+                                            $sql2 = "SELECT * FROM riderTbl WHERE riderID = ' ".$row['riderID']." ' ";
+                                            $result2 = mysqli_query($conn,$sql2);
+                                            $row2=mysqli_fetch_assoc($result2);
+                                            $rider = $row['riderID'];
 
-                                          echo "<div id='updateUser".$row['adminID']."' class='modal fade' role='dialog'>
+                                            echo "<div id='updateRider".$row['riderID']."' class='modal fade' role='dialog'>
+
+                                            <div class='modal-dialog'>
+
+                                              <!-- Modal content-->
+                                              <div class='modal-content'>
+                                                <div class='modal-header'>
+
+                                                </div>
+                                                <div class='modal-body'>
+
+
+                                                  <div class='modal-body p-4 py-5 p-md-5'>
+                                                    <h3 class='text-center mb-3'>Update Rider</h3>
+                                                    <br>
+                                                    <form class='signup-form'  method='POST'>
+                                                        <input type='text' class='form-control' value=' ". $row2["riderID"] ." ' name='rider_ID' hidden>
+                                                      <div class='form-group mb-2'>
+                                                        <label for='name'>First Name</label>
+                                                        <input type='text' class='form-control' value=' ". $row2["firstName"] ." ' name='fName'>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label for='name'>Last Name</label>
+                                                        <input type='text' class='form-control' value=' ". $row2["lastName"] ." ' name='lName'>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label for='email'>Email</label>
+                                                        <input type='text' class='form-control' value=' ". $row2["email"] ." ' name='Email' >
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label >Password</label>
+                                                        <input type='text' class='form-control' value=' ". $row2["password"] ." ' name='Password'>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label >Phone</label>
+                                                        <input type='text' class='form-control' value=' ". $row2["phone"] ." ' name='Phone'>
+                                                      </div>
+                                                      <br>
+                                                      <div class='form-group mb-2'>
+                                                        <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateRider'>Upate Rider</button>
+                                                      </div>
+
+
+                                                    </form>
+                                                  </div>
+
+
+                                                </div>
+                                                <div class='modal-footer'>
+                                                  <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                                                </div>
+                                              </div>
+
+                                            </div>
+                                          </div>";
+
+                                          echo "<div id='deleteRider".$row['riderID']."' class='modal fade' role='dialog'>
 
                                           <div class='modal-dialog'>
 
@@ -273,83 +332,45 @@
 
                                               </div>
                                               <div class='modal-body'>
-
-
                                                 <div class='modal-body p-4 py-5 p-md-5'>
-                                                  <h3 class='text-center mb-3'>Update Admin</h3>
+                                                  <h3 class='text-center mb-3'>Delete Rider</h3>
                                                   <br>
                                                   <form class='signup-form'  method='POST'>
-                                                      <input type='text' class='form-control' value=' ". $row2["adminID"] ." ' name='admin_ID' hidden>
-                                                    <div class='form-group mb-2'>
-                                                      <label for='name'>Username</label>
-                                                      <input type='text' class='form-control' value=' ". $row2["username"] ." ' name='username'>
-                                                    </div>
-                                                    <div class='form-group mb-2'>
-                                                      <label for='name'>Password</label>
-                                                      <input type='text' class='form-control' value=' ". $row2["password"] ." ' name='password'>
-                                                    </div>
-
-
-
+                                                      <input type='text' class='form-control' value=' ". $row2["riderID"] ." ' name='delriderID' hidden>
                                                     <br>
+                                                      <input type='text' class='form-control' value=' ". $row2["firstName"] . $row2["lastName"] ." ' name='rider_Name' readonly>
+                                                    <p> Do you want to delete this Rider? </p>
                                                     <div class='form-group mb-2'>
-                                                      <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateAdmin'>Update Admin</button>
+                                                      <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnDeleteRider'>Delete Rider</button>
                                                     </div>
-
-
                                                   </form>
                                                 </div>
-
 
                                               </div>
                                               <div class='modal-footer'>
                                                 <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
                                               </div>
                                             </div>
-
                                           </div>
                                         </div>";
-
-
-                                        echo "<div id='deleteAdmin".$row['adminID']."' class='modal fade' role='dialog'>
-
-                                        <div class='modal-dialog'>
-
-                                          <!-- Modal content-->
-                                          <div class='modal-content'>
-                                            <div class='modal-header'>
-
-                                            </div>
-                                            <div class='modal-body'>
-                                              <div class='modal-body p-4 py-5 p-md-5'>
-                                                <h3 class='text-center mb-3'>Delete Admin Account</h3>
-                                                <br>
-                                                <form class='signup-form'  method='POST'>
-                                                    <input type='text' class='form-control' value=' ". $row2["adminID"] ." ' name='deladminID' hidden>
-                                                  <br>
-                                                    <input type='text' class='form-control' value=' ". $row2["username"] ." ' name='admin_Name' readonly>
-                                                  <p> Do you want to delete this Admin Account? </p>
-                                                  <div class='form-group mb-2'>
-                                                    <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnDeleteAdmin'>Delete Admin Account</button>
-                                                  </div>
-                                                </form>
-                                              </div>
-
-                                            </div>
-                                            <div class='modal-footer'>
-                                              <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>";
-                                          }
-                                          // echo "</table>";
-                                          } else { echo "0 results"; }
-                                          // $conn->close();
+                                            }
+                                            // echo "</table>";
+                                            } else { echo "0 results"; }
+                                            // $conn->close();
 
                                            ?>
-                                        </tbody>
 
+                                        </tbody>
+                                        <tfoot>
+                                            <!-- <tr>
+                                                <th>UserID</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Email</th>
+                                                <th>Password</th>
+                                                <th>Phone</th>
+                                            </tr> -->
+                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -359,8 +380,9 @@
             </div>
             <!-- #/ container -->
         </div>
+
         <!-- Modal Add User -->
-        <div class="modal fade" id="addAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="addRider" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -369,22 +391,32 @@
                 </button>
               </div>
               <div class="modal-body p-4 py-5 p-md-5">
-                <h3 class="text-center mb-3">Add New Admin</h3>
+                <h3 class="text-center mb-3">Add New Rider</h3>
                 <br>
                 <form action="#" class="signup-form"  method="POST">
-
                   <div class="form-group mb-2">
-                    <label for="name">Username</label>
-                    <input type="text" class="form-control" placeholder="" name="username">
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" placeholder="" name="fname">
                   </div>
                   <div class="form-group mb-2">
-                    <label for="name">Password</label>
-                    <input type="text" class="form-control" placeholder="" name="password">
+                    <label for="name">Last Name</label>
+                    <input type="text" class="form-control" placeholder="" name="lname">
                   </div>
-
+                  <div class="form-group mb-2">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" placeholder="" name="email">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label >Password</label>
+                    <input type="password" class="form-control" placeholder="" name="password">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label >Phone</label>
+                    <input type="text" class="form-control" placeholder="" name="phone">
+                  </div>
                   <br>
                   <div class="form-group mb-2">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddAdmin">Add Admin</button>
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddRider">Add Rider</button>
                   </div>
 
                 </form>
@@ -393,41 +425,77 @@
           </div>
         </div>
 
-
         <!-- Modal Update User -->
-
-    	    <div class="modal fade" id="updateAdmin<?php echo $row['adminID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true" class="ion-ios-close"></span>
-                    </button>
+        <div class="modal fade" id="updateRider<?php echo $row['riderID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="ion-ios-close"></span>
+                </button>
+              </div>
+              <div class="modal-body p-4 py-5 p-md-5">
+                <h3 class="text-center mb-3">Update Rider</h3>
+                <br>
+                <form action="#" class="signup-form"  method="POST">
+                  <div class="form-group mb-2">
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" placeholder="<?php $row["firstName"] ?>" name="fname">
                   </div>
-                  <div class="modal-body p-4 py-5 p-md-5">
-                    <h3 class="text-center mb-3">Update Admin</h3>
-                    <br>
-                    <form action="#" class="signup-form"  method="POST">
-                      <div class="form-group mb-2">
-                        <label for="name">Username</label>
-                        <input type="text" class="form-control" placeholder="<?php $row["username"] ?>" name="username">
-                      </div>
-                      <div class="form-group mb-2">
-                        <label for="name">Pasword</label>
-                        <input type="text" class="form-control" placeholder="" name="pasword">
-                      </div>
-
-
-                      <br>
-                      <div class="form-group mb-2">
-                        <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnUpdateAdmin">Update Admin</button>
-                      </div>
-
-                    </form>
+                  <div class="form-group mb-2">
+                    <label for="name">Last Name</label>
+                    <input type="text" class="form-control" placeholder="" name="lname">
                   </div>
-                </div>
+                  <div class="form-group mb-2">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" placeholder="" name="email">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label >Password</label>
+                    <input type="password" class="form-control" placeholder="" name="password">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label >Phone</label>
+                    <input type="text" class="form-control" placeholder="" name="phone">
+                  </div>
+                  <br>
+                  <div class="form-group mb-2">
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddRider">Upate Rider</button>
+                  </div>
+
+                </form>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Modal Delete User -->
+        <div class="modal fade" id="deleteRider<?php echo $row['riderID']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="ion-ios-close"></span>
+                </button>
+              </div>
+              <div class="modal-body p-4 py-5 p-md-5">
+                <h3 class="text-center mb-3">Delete Rider</h3>
+                <br>
+                <form action="#" class="signup-form"  method="POST">
+                  <div class="form-group mb-2">
+                    <label for="name">Rider</label>
+                    <input type="text" class="form-control" placeholder="<?php $row["riderID"] ?>" name="delriderID">
+                  </div>
+                  <br>
+                  <div class="form-group mb-2">
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnDeleteRider">Delete Rider</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
         <!--**********************************
             Content body end
         ***********************************-->
@@ -438,7 +506,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by LARSS GROUP</a> 2021</p>
+                <p>Copyright &copy; Designed & Developed by LARSS GROUP 2021</p>
             </div>
         </div>
         <!--**********************************
@@ -461,6 +529,7 @@
     <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
     <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+
     <!-- modal -->
     <script src="../modal/js/jquery.min.js"></script>
     <script src="../modal/js/popper.js"></script>
@@ -468,15 +537,18 @@
     <script src="../modal/js/main.js"></script>
 
 </body>
-<?php
-    if(isset($_POST['btnAddAdmin'])){
-        $adminID=$_POST['adminID'];
-        $username=$_POST['username'];
-        $password=$_POST['password'];
 
-        $query="INSERT INTO admintbl (adminID,username,password) VALUES ('$adminID','$username', '$password')";
+<?php
+    if(isset($_POST['btnAddRider'])){
+        $fname=$_POST['fname'];
+        $lname=$_POST['lname'];
+        $email=$_POST['email'];
+        $pwd=$_POST['password'];
+        $phone=$_POST['phone'];
+        // $query="INSERT INTO usertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email',SHA('$pwd'), '$phone')"; //for encryption of password utilize SHA()
+        $query="INSERT INTO ridertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email','$pwd', '$phone')";
         mysqli_query($conn,$query);
-        header("Location: tblAdmin.php");
+        header("Location: riderTbl.php");
         // $count = mysqli_num_rows($result);
         // if($count ==0)
         //   echo "<script language='javascript'> alert('Incorrect username or password');</script>";
@@ -486,22 +558,26 @@
         //   header("Location: ../index.php");
         // }
     }
+  if(isset($_POST['btnUpdateRider'])){
 
-    if(isset($_POST['btnUpdateAdmin'])){
+        $fName=$_POST['fName'];
+        $rider=$_POST['rider_ID'];
+        $lName=$_POST['lName'];
+        $Email=$_POST['Email'];
+        $Pwd=$_POST['Password'];
+        $Phone=$_POST['Phone'];
 
-        $admin=$_POST['admin_ID'];
-        $username=$_POST['username'];
-        $password=$_POST['password'];
-
-        $sql3 = mysqli_query($conn,"UPDATE adminTbl set username='$username',password='$password' where adminID = $admin");
-        header("Location: tblAdmin.php");
+        $sql3 = mysqli_query($conn,"UPDATE ridertbl set firstName='$fName',lastName='$lName',email='$Email',password='$Pwd',phone='$Phone' where riderID = $rider");
+        header("Location: riderTbl.php");
 
     }
-    if(isset($_POST['btnDeleteAdmin'])){
-            $deladmin=$_POST['deladminID'];
-            $sql4 = mysqli_query($conn,"DELETE FROM adminTbl WHERE adminID = $deladmin");
-            header("Location: tblAdmin.php");
+    if(isset($_POST['btnDeleteRider'])){
+            $delrider=$_POST['delriderID'];
+            $sql4 = mysqli_query($conn,"DELETE FROM riderTbl WHERE riderID = $delrider");
+            header("Location: riderTbl.php");
 
       }
 ?>
+
+
 </html>

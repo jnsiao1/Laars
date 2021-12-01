@@ -191,6 +191,7 @@
                             <li><a href="./userTbl.php" aria-expanded="false">User Table</a></li>
                             <li><a href="./gasTbl.php" aria-expanded="false">Gas Table</a></li>
                             <li><a href="./tblAdmin.php" aria-expanded="false">Admin Table</a></li>
+                            <li><a href="./riderTbl.php" aria-expanded="false">Rider Table</a></li>
                         </ul>
                     </li>
                     <!-- <li class="nav-label">Pages</li>
