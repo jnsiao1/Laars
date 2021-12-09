@@ -241,6 +241,7 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
+                                                <th>GasID</th>
                                                 <th>Company</th>
                                                 <th>Name</th>
                                                 <th>Price</th>
@@ -254,7 +255,7 @@
                                             if ($result->num_rows > 0) {
                                             // output data of each row
                                             while($row = $result->fetch_assoc()) {
-                                            echo "<tr><td>" . $row["company"]. "</td><td>" . $row["name"] . "</td><td>"
+                                            echo "<tr><td>" . $row["gasID"]. "</td><td>" . $row["company"]. "</td><td>" . $row["name"] . "</td><td>"
                                             . $row["price"]. "</td>   <td>" . "<i class='fas fa-edit' data-toggle='modal' data-target='#updateGas". $row['gasID']. "'>
                                               </i> &nbsp <i class='fas fa-trash-alt' data-toggle='modal' data-target='#deleteGas". $row['gasID']. "'></i>". "</td>
                                           </tr>";

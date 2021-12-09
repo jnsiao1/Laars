@@ -295,15 +295,48 @@
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label >UserID</label>
-                                                        <input type='text' class='form-control' value='". $row2["userID"] ."' name='userID'>
+                                                        <select name='userID' class='form-control'>";
+
+                                                            $users = "SELECT * FROM userTbl where userID !=" . $row2['userID'];
+                                                            $resultUsers = $conn->query($users);
+                                                            if ($resultUsers->num_rows > 0) {
+                                                              echo "<option value='". $row2['userID'] ."' selected>". $row2['userID'] ."</option>";
+                                                              while($rowUsers = $resultUsers->fetch_assoc()) {
+                                                                echo "<option value=' " . $rowUsers["userID"] . " '>". $rowUsers['userID'] ."</option>"  ;
+                                                              }
+                                                            }else { echo "<option value='NA' selected>NO USERS</option>"  ; }
+                                                          echo"
+                                                        </select>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label >GasID</label>
-                                                        <input type='text' class='form-control' value='". $row2["gasID"] ."' name='gasID'>
+                                                        <select name='gasID' class='form-control'>";
+
+                                                            $gas = "SELECT * FROM gasTbl where gasID !=" . $row2['gasID'];
+                                                            $resultGas = $conn->query($gas);
+                                                            if ($resultGas->num_rows > 0) {
+                                                              echo "<option value='". $row2['gasID'] ."' selected>". $row2['gasID'] ."</option>";
+                                                              while($rowGas = $resultGas->fetch_assoc()) {
+                                                                echo "<option value=' " . $rowGas["gasID"] . " '>" . $rowGas["gasID"] . "</option>";
+                                                              }
+                                                            }else { echo "<option value='NA' selected>NO GAS</option>"; }
+                                                          echo "
+                                                        </select>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label >RiderID</label>
-                                                        <input type='text' class='form-control' value='". $row2["riderID"] ."' name='riderID'>
+                                                        <select name='riderID' class='form-control'>";
+
+                                                            $rider = "SELECT * FROM riderTbl";
+                                                            $resultRider= $conn->query($rider);
+                                                            if ($resultRider->num_rows > 0) {
+                                                              echo "<option value='". $row2['riderID'] ."' selected>". $row2['riderID'] ."</option>";
+                                                              while($rowRider = $resultRider->fetch_assoc()) {
+                                                                echo "<option value=' " . $rowRider["riderID"] . " '>" . $rowRider["riderID"] . "</option>";
+                                                              }
+                                                            }else { echo "<option value='NA' selected>NO RIDERS</option>"; }
+                                                          echo"
+                                                        </select>
                                                       </div>
                                                       <br>
                                                       <div class='form-group mb-2'>
@@ -393,7 +426,10 @@
                   </div>
                   <div class="form-group mb-2">
                     <label>Mode of Payment</label>
-                    <input type="text" class="form-control" placeholder="" name="mop">
+                    <select name="mop" class="form-control">
+                      <option value="Cash">Cash</option>
+                      <option value="Online Pay">Online Pay</option>
+                    </select>
                   </div>
                   <div class="form-group mb-2">
                     <label>Payment</label>
@@ -405,23 +441,60 @@
                   </div>
                   <div class="form-group mb-2">
                     <label >Status</label>
-                    <input type="text" class="form-control" placeholder="" name="status">
+                    <select name="status" class="form-control">
+                      <option value="Pending">Pending</option>
+                      <option value="Complete">Complete</option>
+                    </select>
                   </div>
                   <div class="form-group mb-2">
                     <label >Windshield Cleaning</label>
-                    <input type="text" class="form-control" placeholder="" name="windshield">
+                    <select name="windshield" class="form-control">
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </select>
                   </div>
                   <div class="form-group mb-2">
                     <label >UserID</label>
-                    <input type="number" class="form-control" placeholder="" name="userID">
+                    <select name="userID" class="form-control">
+                      <?php
+                        $users = "SELECT * FROM userTbl";
+                        $resultUsers = $conn->query($users);
+
+                        if ($resultUsers->num_rows > 0) {
+                          while($row = $resultUsers->fetch_assoc()) {
+                            echo "<option value=' " . $row["userID"] . " '>" . $row["userID"] . "</option>";
+                          }
+                        }else { echo "<option value='NA'>NO USERS</option>"; }
+                      ?>
+                    </select>
                   </div>
                   <div class="form-group mb-2">
                     <label >GasID</label>
-                    <input type="number" class="form-control" placeholder="" name="gasID">
+                    <select name="gasID" class="form-control">
+                      <?php
+                        $gas = "SELECT * FROM gasTbl";
+                        $resultGas = $conn->query($gas);
+                        if ($resultGas->num_rows > 0) {
+                          while($row = $resultGas->fetch_assoc()) {
+                            echo "<option value=' " . $row["gasID"] . " '>" . $row["gasID"] . "</option>";
+                          }
+                        }else { echo "<option value='NA'>NO GAS</option>"; }
+                      ?>
+                    </select>
                   </div>
                   <div class="form-group mb-2">
                     <label >RiderID</label>
-                    <input type="number" class="form-control" placeholder="" name="riderID">
+                    <select name="riderID" class="form-control">
+                      <?php
+                        $rider = "SELECT * FROM riderTbl";
+                        $resultRider= $conn->query($rider);
+                        if ($resultRider->num_rows > 0) {
+                          while($row = $resultRider->fetch_assoc()) {
+                            echo "<option value=' " . $row["riderID"] . " '>" . $row["riderID"] . "</option>";
+                          }
+                        }else { echo "<option value='NA'>NO RIDERS</option>"; }
+                      ?>
+                    </select>
                   </div>
                   <br>
                   <div class="form-group mb-2">
