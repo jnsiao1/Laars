@@ -228,6 +228,7 @@
                                                 <th>UserID</th>
                                                 <th>GasID</th>
                                                 <th>RiderID</th>
+                                                <th>Edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -267,7 +268,7 @@
                                                     <h3 class='text-center mb-3'>Update Transact</h3>
                                                     <br>
                                                     <form class='signup-form'  method='POST'>
-                                                        <input type='text' class='form-control' value='". $row2["transactID"] ."' name='transact_ID' hidden>
+                                                        <input type='text' class='form-control' value='". $row2["transactID"] ."' name='transactID' hidden>
                                                       <div class='form-group mb-2'>
                                                         <label>Date</label>
                                                         <input type='date' class='form-control' value='". $row2["transactDate"] ."' name='date'>
@@ -362,9 +363,7 @@
                                            ?>
 
                                         </tbody>
-                                        <tfoot>
 
-                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
