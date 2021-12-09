@@ -324,8 +324,8 @@
     <script src="../modal/js/bootstrap.min.js"></script>
     <script src="../modal/js/main.js"></script>
 
-    <!-- script for google maps -->
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <!-- script for google maps using JS -->
+    <!-- <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script>
         var myMap;
         var myLatlng = new google.maps.LatLng(52.518903284520796,-1.450427753967233);
@@ -345,7 +345,7 @@
             });
         }
         google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+    </script> -->
 
 </body>
 
