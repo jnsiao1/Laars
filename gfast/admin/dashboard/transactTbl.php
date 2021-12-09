@@ -193,26 +193,6 @@
                             <li><a href="./transactTbl.php" aria-expanded="false">Order Table</a></li>
                         </ul>
                     </li>
-                    <!-- <li class="nav-label">Pages</li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-notebook menu-icon"></i><span class="nav-text">Pages</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./page-login.html">Login</a></li>
-                            <li><a href="./page-register.html">Register</a></li>
-                            <li><a href="./page-lock.html">Lock Screen</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="./page-error-404.html">Error 404</a></li>
-                                    <li><a href="./page-error-403.html">Error 403</a></li>
-                                    <li><a href="./page-error-400.html">Error 400</a></li>
-                                    <li><a href="./page-error-500.html">Error 500</a></li>
-                                    <li><a href="./page-error-503.html">Error 503</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li> -->
                 </ul>
             </div>
         </div>
@@ -231,43 +211,47 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Rider Table</h4>
+                                <h4 class="card-title">Transaction Table</h4>
                                 <br>
-                                <button type="button" class="button-19" data-toggle="modal" data-target="#addRider">Add Rider</button>
+                                <button type="button" class="button-19" data-toggle="modal" data-target="#addTransact">Add Order</button>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
+                                                <th>TransactID</th>
+                                                <th>Date</th>
+                                                <th>Mode of<br>Payment</th>
+                                                <th>Payment</th>
+                                                <th>Location</th>
+                                                <th>Status</th>
+                                                <th>Windshield<br>Cleaning</th>
+                                                <th>UserID</th>
+                                                <th>GasID</th>
                                                 <th>RiderID</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Email</th>
-                                                <th>Password</th>
-                                                <th>Phone</th>
-                                                <th>Edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
                                           <?php
-                                            $sql = "SELECT * FROM riderTbl";
+                                            $sql = "SELECT * FROM transactTbl";
                                             $result = $conn->query($sql);
                                             if ($result->num_rows > 0) {
                                             // output data of each row
                                             while($row = $result->fetch_assoc()) {
-                                            echo "<tr><td>" . $row["riderID"]. "</td><td>" . $row["firstName"] . "</td><td>"
-                                            . $row["lastName"]. "</td><td>" . $row["email"] . "</td>
-                                            <td>" . $row["password"] . "</td><td>" . $row["phone"] . "</td>
-                                            <td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateRider".$row['riderID']. "'>
-                                            </i> &nbsp <i class='fas fa-trash-alt' data-toggle='modal' data-target='#deleteRider". $row['riderID']. "'></i>". "</td>
+                                            echo "<tr><td>" . $row["transactID"]. "</td><td>" . $row["transactDate"] . "</td><td>".
+                                            $row["mop"]. "</td><td>" . $row["payment"] . "</td><td>" . $row["location"] . "</td><td>" .
+                                            $row["status"] . "</td><td>" . $row["windshield"] . "</td><td>" . $row["userID"] . "</td><td>" .
+                                            $row["gasID"] . "</td><td>" . $row["riderID"] ."</td><td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateTransact".
+                                            $row['transactID']. "'></i> &nbsp <i class='fas fa-trash-alt' data-toggle='modal' data-target='#deleteTransact".
+                                            $row['transactID']. "'></i>". "</td>
                                             </tr>";
 
-                                            $sql2 = "SELECT * FROM riderTbl WHERE riderID = ' ".$row['riderID']." ' ";
+                                            $sql2 = "SELECT * FROM transactTbl WHERE transactID = ' ".$row['transactID']." ' ";
                                             $result2 = mysqli_query($conn,$sql2);
                                             $row2=mysqli_fetch_assoc($result2);
-                                            $rider = $row['riderID'];
+                                            $transact = $row['transactID'];
 
-                                            echo "<div id='updateRider".$row['riderID']."' class='modal fade' role='dialog'>
+                                            echo "<div id='updateTransact".$row['transactID']."' class='modal fade' role='dialog'>
 
                                             <div class='modal-dialog'>
 
@@ -280,33 +264,49 @@
 
 
                                                   <div class='modal-body p-4 py-5 p-md-5'>
-                                                    <h3 class='text-center mb-3'>Update Rider</h3>
+                                                    <h3 class='text-center mb-3'>Update Transact</h3>
                                                     <br>
                                                     <form class='signup-form'  method='POST'>
-                                                        <input type='text' class='form-control' value='". $row2["riderID"] ."' name='rider_ID' hidden>
+                                                        <input type='text' class='form-control' value='". $row2["transactID"] ."' name='transact_ID' hidden>
                                                       <div class='form-group mb-2'>
-                                                        <label for='name'>First Name</label>
-                                                        <input type='text' class='form-control' value='". $row2["firstName"] ."' name='fName'>
+                                                        <label>Date</label>
+                                                        <input type='date' class='form-control' value='". $row2["transactDate"] ."' name='date'>
                                                       </div>
                                                       <div class='form-group mb-2'>
-                                                        <label for='name'>Last Name</label>
-                                                        <input type='text' class='form-control' value='". $row2["lastName"] ."' name='lName'>
+                                                        <label>Mode of Payment</label>
+                                                        <input type='text' class='form-control' value='". $row2["mop"] ."' name='mop' >
                                                       </div>
                                                       <div class='form-group mb-2'>
-                                                        <label for='email'>Email</label>
-                                                        <input type='text' class='form-control' value='". $row2["email"] ."' name='Email' >
+                                                        <label>Payment</label>
+                                                        <input type='number' class='form-control' value='". $row2["payment"] ."' name='payment'>
                                                       </div>
                                                       <div class='form-group mb-2'>
-                                                        <label >Password</label>
-                                                        <input type='text' class='form-control' value='". $row2["password"] ."' name='Password'>
+                                                        <label>Location</label>
+                                                        <input type='text' class='form-control' value='". $row2["location"] ."' name='location' >
                                                       </div>
                                                       <div class='form-group mb-2'>
-                                                        <label >Phone</label>
-                                                        <input type='text' class='form-control' value='". $row2["phone"] ."' name='Phone'>
+                                                        <label >Status</label>
+                                                        <input type='text' class='form-control' value='". $row2["status"] ."' name='status'>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label >Windshield Cleaning</label>
+                                                        <input type='text' class='form-control' value='". $row2["windshield"] ."' name='windshield'>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label >UserID</label>
+                                                        <input type='text' class='form-control' value='". $row2["userID"] ."' name='userID'>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label >GasID</label>
+                                                        <input type='text' class='form-control' value='". $row2["gasID"] ."' name='gasID'>
+                                                      </div>
+                                                      <div class='form-group mb-2'>
+                                                        <label >RiderID</label>
+                                                        <input type='text' class='form-control' value='". $row2["riderID"] ."' name='riderID'>
                                                       </div>
                                                       <br>
                                                       <div class='form-group mb-2'>
-                                                        <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateRider'>Upate Rider</button>
+                                                        <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnUpdateTransact'>Upate Transaction</button>
                                                       </div>
 
 
@@ -323,7 +323,7 @@
                                             </div>
                                           </div>";
 
-                                          echo "<div id='deleteRider".$row['riderID']."' class='modal fade' role='dialog'>
+                                          echo "<div id='deleteTransact".$row['transactID']."' class='modal fade' role='dialog'>
 
                                           <div class='modal-dialog'>
 
@@ -334,15 +334,15 @@
                                               </div>
                                               <div class='modal-body'>
                                                 <div class='modal-body p-4 py-5 p-md-5'>
-                                                  <h3 class='text-center mb-3'>Delete Rider</h3>
+                                                  <h3 class='text-center mb-3'>Delete Transaction</h3>
                                                   <br>
                                                   <form class='signup-form'  method='POST'>
-                                                      <input type='text' class='form-control' value=' ". $row2["riderID"] ." ' name='delriderID' hidden>
+                                                      <input type='text' class='form-control' value=' ". $row2["transactID"] ." ' name='deltransactID' hidden>
                                                     <br>
-                                                      <input type='text' class='form-control' value=' ". $row2["firstName"] ." " . $row2["lastName"] ." ' name='rider_Name' readonly>
-                                                    <p> Do you want to delete this Rider? </p>
+                                                      <input type='text' class='form-control' value='". $row2["transactID"] ." ' name='transact_ID' readonly>
+                                                    <p> Do you want to delete this Transaction? </p>
                                                     <div class='form-group mb-2'>
-                                                      <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnDeleteRider'>Delete Rider</button>
+                                                      <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='btnDeleteTransact'>Delete Transaction</button>
                                                     </div>
                                                   </form>
                                                 </div>
@@ -363,14 +363,7 @@
 
                                         </tbody>
                                         <tfoot>
-                                            <!-- <tr>
-                                                <th>UserID</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Email</th>
-                                                <th>Password</th>
-                                                <th>Phone</th>
-                                            </tr> -->
+
                                         </tfoot>
                                     </table>
                                 </div>
@@ -383,7 +376,7 @@
         </div>
 
         <!-- Modal Add User -->
-        <div class="modal fade" id="addRider" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="addTransact" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -392,32 +385,48 @@
                 </button>
               </div>
               <div class="modal-body p-4 py-5 p-md-5">
-                <h3 class="text-center mb-3">Add New Rider</h3>
+                <h3 class="text-center mb-3">Add New Order</h3>
                 <br>
                 <form action="#" class="signup-form"  method="POST">
                   <div class="form-group mb-2">
-                    <label for="name">First Name</label>
-                    <input type="text" class="form-control" placeholder="" name="fname">
+                    <label>Date</label>
+                    <input type="date" class="form-control" placeholder="" name="date">
                   </div>
                   <div class="form-group mb-2">
-                    <label for="name">Last Name</label>
-                    <input type="text" class="form-control" placeholder="" name="lname">
+                    <label>Mode of Payment</label>
+                    <input type="text" class="form-control" placeholder="" name="mop">
                   </div>
                   <div class="form-group mb-2">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" placeholder="" name="email">
+                    <label>Payment</label>
+                    <input type="number" class="form-control" placeholder="" name="payment">
                   </div>
                   <div class="form-group mb-2">
-                    <label >Password</label>
-                    <input type="password" class="form-control" placeholder="" name="password">
+                    <label >Location</label>
+                    <input type="text" class="form-control" placeholder="" name="location">
                   </div>
                   <div class="form-group mb-2">
-                    <label >Phone</label>
-                    <input type="text" class="form-control" placeholder="" name="phone">
+                    <label >Status</label>
+                    <input type="text" class="form-control" placeholder="" name="status">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label >Windshield Cleaning</label>
+                    <input type="text" class="form-control" placeholder="" name="windshield">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label >UserID</label>
+                    <input type="number" class="form-control" placeholder="" name="userID">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label >GasID</label>
+                    <input type="number" class="form-control" placeholder="" name="gasID">
+                  </div>
+                  <div class="form-group mb-2">
+                    <label >RiderID</label>
+                    <input type="number" class="form-control" placeholder="" name="riderID">
                   </div>
                   <br>
                   <div class="form-group mb-2">
-                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddRider">Add Rider</button>
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3" name="btnAddTransact">Add Order</button>
                   </div>
 
                 </form>
@@ -470,42 +479,43 @@
 </body>
 
 <?php
-    if(isset($_POST['btnAddRider'])){
-        $fname=$_POST['fname'];
-        $lname=$_POST['lname'];
-        $email=$_POST['email'];
-        $pwd=$_POST['password'];
-        $phone=$_POST['phone'];
+    if(isset($_POST['btnAddTransact'])){
+        $date=$_POST['date'];
+        $mop=$_POST['mop'];
+        $payment=$_POST['payment'];
+        $location=$_POST['location'];
+        $status=$_POST['status'];
+        $windshield=$_POST['windshield'];
+        $userID=$_POST['userID'];
+        $gasID=$_POST['gasID'];
+        $riderID=$_POST['riderID'];
         // $query="INSERT INTO usertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email',SHA('$pwd'), '$phone')"; //for encryption of password utilize SHA()
-        $query="INSERT INTO ridertbl (firstName, lastName, email, password, phone) VALUES ('$fname','$lname', '$email','$pwd', '$phone')";
+        $query="INSERT INTO transacttbl (transactDate, mop, payment, location, status, windshield, userID, gasID, riderID)
+        VALUES ('$date','$mop', '$payment','$location', '$status', '$windshield', '$userID', '$gasID', '$riderID')";
         mysqli_query($conn,$query);
-        header("Location: riderTbl.php");
-        // $count = mysqli_num_rows($result);
-        // if($count ==0)
-        //   echo "<script language='javascript'> alert('Incorrect username or password');</script>";
-        // else{
-        //   $row=mysqli_fetch_assoc($result);
-        //   $_SESSION['login']=$row['email'];
-        //   header("Location: ../index.php");
-        // }
-    }
-  if(isset($_POST['btnUpdateRider'])){
-
-        $fName=$_POST['fName'];
-        $rider=$_POST['rider_ID'];
-        $lName=$_POST['lName'];
-        $Email=$_POST['Email'];
-        $Pwd=$_POST['Password'];
-        $Phone=$_POST['Phone'];
-
-        $sql3 = mysqli_query($conn,"UPDATE ridertbl set firstName='$fName',lastName='$lName',email='$Email',password='$Pwd',phone='$Phone' where riderID = $rider");
-        header("Location: riderTbl.php");
+        header("Location: transactTbl.php");
 
     }
-    if(isset($_POST['btnDeleteRider'])){
-            $delrider=$_POST['delriderID'];
-            $sql4 = mysqli_query($conn,"DELETE FROM riderTbl WHERE riderID = $delrider");
-            header("Location: riderTbl.php");
+  if(isset($_POST['btnUpdateTransact'])){
+        $date=$_POST['date'];
+        $mop=$_POST['mop'];
+        $payment=$_POST['payment'];
+        $location=$_POST['location'];
+        $status=$_POST['status'];
+        $windshield=$_POST['windshield'];
+        $userID=$_POST['userID'];
+        $gasID=$_POST['gasID'];
+        $riderID=$_POST['riderID'];
+        $transact=$_POST['transactID'];
+        $sql3 = mysqli_query($conn,"UPDATE transacttbl set transactDate='$date',mop='$mop',payment='$payment',location='$location',
+        status='$status', windshield='$windshield', userID='$userID', gasID='$gasID', riderID='$riderID' where transactID = $transact");
+        header("Location: transactTbl.php");
+
+    }
+    if(isset($_POST['btnDeleteTransact'])){
+            $deltransact=$_POST['deltransactID'];
+            $sql4 = mysqli_query($conn,"DELETE FROM transactTbl WHERE transactID = $deltransact");
+            header("Location: transactTbl.php");
 
       }
 ?>

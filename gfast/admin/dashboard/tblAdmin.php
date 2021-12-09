@@ -191,6 +191,7 @@
                             <li><a href="./gasTbl.php" aria-expanded="false">Gas Table</a></li>
                             <li><a href="./tblAdmin.php" aria-expanded="false">Admin Table</a></li>
                             <li><a href="./riderTbl.php" aria-expanded="false">Rider Table</a></li>
+                            <li><a href="./transactTbl.php" aria-expanded="false">Order Table</a></li>
                         </ul>
                     </li>
                     <!-- <li class="nav-label">Pages</li>
