@@ -242,7 +242,7 @@
                                         <thead>
                                             <tr>
                                                 <th>GasID</th>
-                                                <th>Company</th>
+                                                <th>Gas Station</th>
                                                 <th>Name</th>
                                                 <th>Price</th>
                                                 <th>Edit</th
