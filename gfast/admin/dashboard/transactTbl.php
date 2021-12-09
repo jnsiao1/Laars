@@ -228,6 +228,7 @@
                                                 <th>UserID</th>
                                                 <th>GasID</th>
                                                 <th>RiderID</th>
+                                                <th>Edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
