@@ -235,7 +235,18 @@
                                 <br>
                                 Accept orders here
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered zero-configuration">
+
+                                  <!-- Maps Embed Trials -->
+
+                                  <!-- Trial 1: Script Type using google api JS -->
+                                  <!-- <div id="map" style="width:500px; height: 500px; float: left; margin-right: 20px;"></div> -->
+
+                                  <!-- Trial 2: Embeded Google Map using Google Maps Embed Feature -->
+                                  <div class="map" style="float: left; margin-right: 20px;">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125585.22372705504!2d123.77625454866048!3d10.378756863835617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a999258dcd2dfd%3A0x4c34030cdbd33507!2sCebu%20City%2C%20Cebu!5e0!3m2!1sen!2sph!4v1639028347850!5m2!1sen!2sph" width="500" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                  </div>
+
+                                    <table class="table table-striped table-bordered zero-configuration" style="float: right;">
                                         <thead>
                                             <tr>
                                                 <th>Customer Phone</th>
@@ -312,6 +323,29 @@
     <script src="../modal/js/popper.js"></script>
     <script src="../modal/js/bootstrap.min.js"></script>
     <script src="../modal/js/main.js"></script>
+
+    <!-- script for google maps -->
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script>
+        var myMap;
+        var myLatlng = new google.maps.LatLng(52.518903284520796,-1.450427753967233);
+        function initialize() {
+            var mapOptions = {
+                zoom: 13,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP  ,
+                scrollwheel: false
+            }
+            myMap = new google.maps.Map(document.getElementById('map'), mapOptions);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: myMap,
+                title: 'Name Of Business',
+                icon: 'http://www.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png'
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 
 </body>
 
