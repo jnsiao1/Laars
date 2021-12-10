@@ -282,7 +282,7 @@
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label>Payment</label>
-                                                        <input type='number' class='form-control' value='". $row2["payment"] ."' name='payment'>
+                                                        <input type='number' class='form-control' value='". $row2["payment"] ."' name='payment' step='0.01'>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label>Location</label>
@@ -442,7 +442,7 @@
                   </div>
                   <div class="form-group mb-2">
                     <label>Payment</label>
-                    <input type="number" class="form-control" placeholder="" name="payment">
+                    <input type="number" class="form-control" placeholder="" name="payment" step="0.01">
                   </div>
                   <div class="form-group mb-2">
                     <label >Location</label>

@@ -256,7 +256,7 @@
                                                 <th>Location</th>
                                                 <th>Windshield</th>
                                                 <th>Customer Phone</th>
-                                                <th>ACCEPT/REJECT</th>
+                                                <th>ACCEPT ORDERS</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -269,8 +269,7 @@
                                               while($row = $result->fetch_assoc()) {
                                               echo "<tr><td>" . $row["transactID"]. "</td><td>" . $row["transactDate"] . "</td><td>".
                                               $row["mop"]. "</td><td>" . $row["payment"] . "</td><td>" . $row["location"] . "</td><td>" . $row["windshield"] . "</td><td>" . $row["userID"] . "</td><td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateTransact".
-                                              $row['transactID']. "'></i>ACCEPT &nbsp <i class='fas fa-trash-alt' data-toggle='modal' data-target='#deleteTransact".
-                                              $row['transactID']. "'></i>REJECT".  "</td>
+                                              $row['transactID']. "'></i>ACCEPT &nbsp ".  "</td>
                                               </tr>";
                                               }
                                             }
