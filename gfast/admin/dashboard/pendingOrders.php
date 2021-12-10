@@ -249,18 +249,32 @@
                                     <table class="table table-striped table-bordered zero-configuration" style="float: right;">
                                         <thead>
                                             <tr>
-                                                <th>Customer Phone</th>
+                                                <th>TransactID</th>
                                                 <th>Date</th>
                                                 <th>Mode of Payment</th>
                                                 <th>Payment Total</th>
                                                 <th>Location</th>
                                                 <th>Windshield</th>
                                                 <th>Customer Phone</th>
+                                                <th>ACCEPT/REJECT</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-
+                                          <?php
+                                            $sql = "SELECT * FROM transactTbl";
+                                            $result = $conn->query($sql);
+                                            if ($result->num_rows > 0) {
+                                            // output data of each row
+                                              while($row = $result->fetch_assoc()) {
+                                              echo "<tr><td>" . $row["transactID"]. "</td><td>" . $row["transactDate"] . "</td><td>".
+                                              $row["mop"]. "</td><td>" . $row["payment"] . "</td><td>" . $row["location"] . "</td><td>" . $row["windshield"] . "</td><td>" . $row["userID"] . "</td><td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateTransact".
+                                              $row['transactID']. "'></i>ACCEPT &nbsp <i class='fas fa-trash-alt' data-toggle='modal' data-target='#deleteTransact".
+                                              $row['transactID']. "'></i>REJECT".  "</td>
+                                              </tr>";
+                                              }
+                                            }
+                                          ?>
 
                                         </tbody>
                                         <tfoot>
@@ -349,5 +363,8 @@
 
 </body>
 
+<?php
+
+?>
 
 </html>
