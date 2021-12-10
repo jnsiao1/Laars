@@ -275,7 +275,10 @@
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label>Mode of Payment</label>
-                                                        <input type='text' class='form-control' value='". $row2["mop"] ."' name='mop' >
+                                                        <select name='mop' class='form-control'>
+                                                          <option value='Cash'>Cash</option>
+                                                          <option value='Online Pay'>Online Pay</option>
+                                                        </select>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label>Payment</label>
@@ -287,11 +290,17 @@
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label >Status</label>
-                                                        <input type='text' class='form-control' value='". $row2["status"] ."' name='status'>
+                                                        <select name='status' class='form-control'>
+                                                          <option value='Pending'>Pending</option>
+                                                          <option value='Complete'>Complete</option>
+                                                        </select>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label >Windshield Cleaning</label>
-                                                        <input type='text' class='form-control' value='". $row2["windshield"] ."' name='windshield'>
+                                                        <select name='windshield' class='form-control'>
+                                                          <option value='Yes'>Yes</option>
+                                                          <option value='No'>No</option>
+                                                        </select>
                                                       </div>
                                                       <div class='form-group mb-2'>
                                                         <label >UserID</label>
