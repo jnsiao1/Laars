@@ -3,16 +3,16 @@
   <head>
   	<title>Order Now</title>
     <style>
-    .input[type=text], select{
-    width: 100%;
-    padding: 12px 20px;
-    margin:8px 0;
-    display:inline-block;
-    border:1px solid #ccc;
-    border-radius: 4px;
-    box-sizing:border-box;
-
-  }
+      .input[type=text], select{
+        width: 100%;
+        padding: 12px 20px;
+        margin:8px 0;
+        display:inline-block;
+        border:1px solid #ccc;
+        border-radius: 4px;
+        box-sizing:border-box;
+      }
+    
     </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -89,8 +89,11 @@
 								</div>
 							</div>
 							<div class="col-md-5 d-flex align-items-stretch">
-								<div id="map">
-			          </div>
+								<!-- <div id="map">
+			          </div> -->
+                <div class="map" style="float: left; margin-right: 20px;">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125585.22372705504!2d123.77625454866048!3d10.378756863835617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a999258dcd2dfd%3A0x4c34030cdbd33507!2sCebu%20City%2C%20Cebu!5e0!3m2!1sen!2sph!4v1639028347850!5m2!1sen!2sph" width="510" height="535" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
 							</div>
 						</div>
 					</div>
