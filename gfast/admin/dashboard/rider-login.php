@@ -122,7 +122,8 @@ session_start();
               echo "<script language='javascript'> alert('Incorrect email or password');</script>";
             else{
               $row=mysqli_fetch_assoc($result);
-              $_SESSION['login']=$row['email'];
+              $_SESSION['riderLogin']=$row['email'];
+              $_SESSION['riderID']=$row['riderID'];
               header("Location: pendingOrders.php");
             }
         }

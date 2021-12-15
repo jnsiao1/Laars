@@ -155,9 +155,9 @@
                 <div class="header-right">
                     <ul class="clearfix">
                         <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <?php echo $_SESSION['login']; ?> &nbsp
+                                <?php echo $_SESSION['riderLogin']; ?> &nbsp
                                 <img src="images/user/1.png" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
@@ -240,19 +240,30 @@
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
                                             <tr>
-                                                <th>Customer Phone</th>
+                                                <th>TransactID</th>
                                                 <th>Date</th>
                                                 <th>Mode of Payment</th>
                                                 <th>Payment Total</th>
                                                 <th>Location</th>
                                                 <th>Windshield</th>
-                                                <th>Customer Phone</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
+                                          <?php
+                                            $riderID=$_SESSION['riderID'];
+                                            $sql = "SELECT * FROM transactTbl where status = 'complete' AND riderID='$riderID'";
+                                            $result = $conn->query($sql);
+                                            if ($result->num_rows > 0) {
+                                            // output data of each row
+                                              while($row = $result->fetch_assoc()) {
+                                              echo "<tr><td>" . $row["transactID"]. "</td><td>" . $row["transactDate"] . "</td><td>".
+                                              $row["mop"]. "</td><td>" . $row["payment"] . "</td><td>" . $row["location"] . "</td><td>" . $row["windshield"] .  "</td>
+                                              </tr>";
+                                              }
+                                            }
 
-
-
+                                          ?>
                                         </tbody>
                                         <tfoot>
                                             <!-- <tr>

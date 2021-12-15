@@ -155,7 +155,7 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <?php echo $_SESSION['login']; ?> &nbsp
+                                <?php echo $_SESSION['riderLogin']; ?> &nbsp
                                 <img src="images/user/1.png" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
@@ -255,24 +255,63 @@
                                                 <th>Payment Total</th>
                                                 <th>Location</th>
                                                 <th>Windshield</th>
-                                                <th>Customer Phone</th>
                                                 <th>ACCEPT ORDERS</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
                                           <?php
-                                            $sql = "SELECT * FROM transactTbl";
+                                            $sql = "SELECT * FROM transactTbl where status = 'pending'";
                                             $result = $conn->query($sql);
                                             if ($result->num_rows > 0) {
                                             // output data of each row
                                               while($row = $result->fetch_assoc()) {
                                               echo "<tr><td>" . $row["transactID"]. "</td><td>" . $row["transactDate"] . "</td><td>".
-                                              $row["mop"]. "</td><td>" . $row["payment"] . "</td><td>" . $row["location"] . "</td><td>" . $row["windshield"] . "</td><td>" . $row["userID"] . "</td><td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#updateTransact".
+                                              $row["mop"]. "</td><td>" . $row["payment"] . "</td><td>" . $row["location"] . "</td><td>" . $row["windshield"] . "</td><td>" . "<i class='fas fa-edit' data-toggle='modal'data-target='#acceptTransact".
                                               $row['transactID']. "'></i>ACCEPT &nbsp ".  "</td>
                                               </tr>";
+
+                                                  echo "<div id='acceptTransact".$row['transactID']."' class='modal fade' role='dialog'>
+
+                                                  <div class='modal-dialog'>
+
+                                                    <!-- Modal content-->
+                                                    <div class='modal-content'>
+                                                      <div class='modal-header'>
+
+                                                      </div>
+                                                      <div class='modal-body'>
+
+
+                                                        <div class='modal-body p-4 py-5 p-md-5'>
+                                                          <h3 class='text-center mb-3'>Order Accepted</h3>
+                                                          <center>Please Prepare for the delivery.</center>
+                                                          <form class='signup-form'  method='POST'>
+                                                              <input type='text' class='form-control' value='". $row["transactID"] ."' name='transactID' hidden>
+                                                              <br>
+                                                            <div class='form-group mb-2'>
+                                                              <button type='submit' class='form-control btn btn-primary rounded submit px-3' name='acceptTransact'>Go</button>
+                                                            </div>
+
+
+                                                          </form>
+
+
+                                                        </div>
+                                                        <div class='modal-footer'>
+                                                          <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+                                                        </div>
+
+                                                      </div>
+
+                                                    </div>
+
+                                                  </div>
+                                                </div>";
                                               }
                                             }
+
+
                                           ?>
 
                                         </tbody>
@@ -363,7 +402,13 @@
 </body>
 
 <?php
+  if(isset($_POST['acceptTransact'])){
+    $transact=$_POST['transactID'];
+    $rider=$_SESSION['riderID'];
+    $sql3 = mysqli_query($conn,"UPDATE transacttbl set status='Complete', riderID='$rider' where transactID = $transact");
+    header("Location: pendingOrders.php");
 
+  }
 ?>
 
 </html>
