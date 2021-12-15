@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Contact Form 0</title>
+  	<title>Order Now</title>
     <style>
     .input[type=text], select{
     width: 100%;

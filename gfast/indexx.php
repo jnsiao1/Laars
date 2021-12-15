@@ -127,7 +127,7 @@
             <div class="container">
                 <div class="masthead-subheading">Welcome To!</div>
                 <div class="masthead-heading text-uppercase">G-Fast</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Start Here</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="order.php">Start Here</a>
 
             </div>
         </header>
